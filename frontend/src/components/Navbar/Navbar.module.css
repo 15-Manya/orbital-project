@@ -1,0 +1,10 @@
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btndark {
+    background-color: var(--dark-color);
+    min-width: 140px;
+}
