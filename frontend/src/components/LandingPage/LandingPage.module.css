@@ -1,0 +1,7 @@
+.body {
+    padding-top: 1px;
+    background-image: url('../../assets/background-landing.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 900px;
+}
