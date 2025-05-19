@@ -3,5 +3,45 @@
     background-image: url('../../assets/background-landing.png');
     background-size: cover;
     background-repeat: no-repeat;
+    color: var(--semi-light-color);
+    text-align: center;
     min-height: 900px;
+}
+
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: bolder;
+    margin: 40px 0 30px;
+    opacity: 0.9;
+}
+
+p {
+    font-size: 1.9rem;
+    line-height: 1.4;
+    font-weight: 600;
+    margin: 20px 0 20px;
+    padding-bottom: 20px;
+    opacity: 0.9;
+}
+
+input {
+    background: var(--gray-color);
+    border: 1px solid var(--light-color);
+    border-radius: 10px;
+    width: 60%;
+    padding: 12px;
+    opacity: 0.5;
+}
+
+input::placeholder {
+    color: var(--light-color);
+    font-size: 20;
+    padding-left: 10px;
+}
+
+.btndark {
+    background-color: var(--dark-color);
+    min-width: 175px;
 }

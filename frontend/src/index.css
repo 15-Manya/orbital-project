@@ -8,6 +8,8 @@
 :root {
   --light-color: #fff;
   --dark-color: #000B2D; 
+  --semi-light-color: #f9f9f9;
+  --gray-color: #2C2C2C;
 }
 
 body {
