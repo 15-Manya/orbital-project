@@ -1,5 +1,6 @@
 import styles from "./Navbar.module.css";
 import logo from "../../assets/nav/logo.png";
+import {Link} from "react-router";
 
 function Navbar() {
     return (
@@ -11,8 +12,12 @@ function Navbar() {
                     </a>
                 </div>
                 <div className={styles.buttons}>
-                    <button className="btn text-sm">Login</button>
-                    <button className={`btn ${styles.btndark} text-sm`}>Sign up</button>
+                    <Link to="/login">
+                        <button className="btn text-sm">Login</button>
+                    </Link>
+                    <Link to="/signup">
+                        <button className={`btn ${styles.btndark} text-sm`}>Sign up</button>
+                    </Link>
                 </div>
             </div>
         </nav>
