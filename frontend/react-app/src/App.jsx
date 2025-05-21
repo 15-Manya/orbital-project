@@ -1,12 +1,16 @@
 import './index.css';
 import LandingPage from './components/LandingPage/LandingPage';
-import {} from 'react-router';
+import Login from './components/Login/Login';
+import {BrowserRouter, Routes, Route} from 'react-router';
 
 function App() {
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element ={<LandingPage />}/>
+        <Route path='/login' element ={<Login />} /> 
+      </Routes>
+    </BrowserRouter>
   );
 }
 
