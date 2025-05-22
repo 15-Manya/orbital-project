@@ -1,0 +1,150 @@
+.body{
+    margin: 0px;
+    padding: 0px;
+    background-color:#3D4C7B;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 1px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body .white_box{
+    background-color:#F9F9F9;
+    width: 34.72vw;
+    /* height: 68.44vh; */
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15.78vh;
+    border-radius: 16px;
+    /* padding-bottom: 2vh; */
+}
+
+.body .white_box .logo{
+    width: 16.25vw;
+    /* height: 6.11vh; */
+    margin-left: 9.1vw;
+    margin-top: 2.29vh;
+}
+
+.body .white_box .login{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    height: 2.88vh;
+    font-size: 20px;
+    font-weight: 800;
+    padding-bottom: 30px;
+    margin: 0px;
+}
+
+.body .white_box .username{
+    margin-top: 1.55vh;
+    margin-left: 1.66vw;
+}
+
+.body .white_box .username .email, .body .white_box .username .password{
+    font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.body .white_box .username .box1, .body .white_box .username .box2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000B2D;
+    border: 1px solid #000B2D;
+    border-radius: 12px;
+    width: 31vw;
+    height: 6.11vh;
+    /* padding-left: 20px; */
+}
+
+.body .white_box .username .password{
+    margin-top: 3.33vh;
+}
+
+.body .white_box .forgot_password{
+    margin-left: 23.96vw;
+    font-weight: 700;
+    font-size: 15px;
+    color:#4A6E98;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.body .white_box .remember_me{
+    /* margin-left: 2.5vw; */
+    /* margin-top: 2.67vh; */
+    width: 18.54vw;
+    height: 3.78vh;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    gap: 1vw;
+    white-space: nowrap;
+}
+
+.body .white_box .login_button{
+    text-decoration: none;
+    width: 24.31vw;
+    /* height: 5.56vh; */
+    height: 7vh;
+    background-color:#3D4C7B;
+    display: block;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 1.67vh; */
+    margin-top: 3vh;
+    color: #FFFFFF;
+    text-align: center;
+    border: 2px solid black;
+    /* padding-top: 6px; */
+}
+
+.body .white_box .or{
+    text-align: center;
+    width: 17.4vw;
+    height: 4.88vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.body .white_box .google{
+    height: 6vh;
+    width: 18.82vw;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-left: 8vw;
+    text-align: center;
+}
+
+.body .white_box .google .icon{
+    height: 2.5vh;
+    position: relative;
+    right: 30px;
+    top: 1px;
+}
+
+.body .white_box .no_account{
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5vh;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.body .white_box .no_account .sign_up{
+    text-decoration: none;
+    color: #4A6E98;
+}
