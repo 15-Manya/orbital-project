@@ -145,3 +145,9 @@
     text-decoration: none;
     color: #4A6E98;
 }
+
+.error {
+    color: red;
+    font-size: 1rem;
+    font-weight: 600;
+}
