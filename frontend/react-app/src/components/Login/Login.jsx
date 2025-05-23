@@ -1,6 +1,7 @@
 import styles from './Login.module.css'
 import logo from "../../assets//nextbook_image.png";
 import google from "../../assets//google_logo.png";
+import { Link } from 'react-router';
 function Login() {
     return (
         <>
@@ -35,17 +36,9 @@ function Login() {
 
                     <div className={styles.no_account}>
                         Don't have an account?
-                        <a className={styles.sign_up} href="#">Sign up</a>
+                        <Link to='/signup'>Sign up</Link>
                     </div>
-
-
                 </div>
-
-                
-
-
-
-
             </div>
         </>
     );
