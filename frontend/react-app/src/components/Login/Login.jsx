@@ -1,5 +1,5 @@
 import styles from './Login.module.css'
-import logo from "../../assets//nextbook_image.png";
+import logo from "../../assets/logo-dark.png";
 import google from "../../assets//google_logo.png";
 import { Link } from 'react-router';
 function Login() {
