@@ -1,5 +1,5 @@
 import styles from './SignUp.module.css'
-import logo from "../../assets//nextbook_image.png";
+import logo from "../../assets/logo-dark.png";
 import google from "../../assets//google_logo.png";
 import { Link } from 'react-router';
 import {auth} from "../../Firebase";
@@ -45,39 +45,43 @@ function SignUp() {
     return (
         <>
             <div className={styles.body}>
+                <div className={`container ${styles.display}`}>
+                    <div className={styles.white_box}>
+                        <img className={styles.logo} src={logo}></img>
+                        <p className={styles.sign_up}><b>Create your account</b></p>
 
-                <div className={styles.white_box}>
-                    <img className={styles.logo} src={logo}></img>
-                    <p className={styles.login}><b>Create your account</b></p>
+                        <div className={styles.credentials}>
+                            {error && <p className={styles.error}>{error}</p>}
+                            <p className={styles.email}><b>Email</b></p>
+                            <input type="email" placeholder="Email" className={styles.box1} value={email} onChange={(e) => setEmail(e.target.value)}/>
 
-                    <div className={styles.username}>
-                        {error && <p className={styles.error}>{error}</p>}
-                        <p className={styles.email}><b>Email</b></p>
-                        <input type="email" placeholder="Email" className={styles.box1} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <p className={styles.password}><b>Password</b></p>
+                            <input type="password" placeholder="Password" className={styles.box2} value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-                        <p className={styles.password}><b>Password</b></p>
-                        <input type="password" placeholder="Password" className={styles.box2} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <p className={styles.re_password}><b>Re-enter password</b></p>
+                            <input type="password" placeholder="Re-enter password" className={styles.box3} value={rePassword} onChange={(e) => setRePassword(e.target.value)}/>
+                        </div>
+                        <div className={styles.remember_me}>
+                            <input type="checkbox" id="remember" className={styles.select} />
+                            <label htmlFor="remember">Remember Me</label>
+                        </div>
+                        
 
-                        <p className={styles.re_password}><b>Re-enter password</b></p>
-                        <input type="password" placeholder="Re-enter password" className={styles.box3} value={rePassword} onChange={(e) => setRePassword(e.target.value)}/>
-                    </div>
+                        <button className={`btn ${styles.btndark}`} onClick={signup}>Create an account</button>
 
-                    <div className={styles.remember_me}>
-                        <input type="checkbox" className={styles.select}/>Remember Me
-                    </div>
+                        <p className={styles.or}>or</p>
 
-                    <button className={styles.login_button} onClick={signup}>Create an account</button>
+                        <button className={`btn ${styles.google}`} onClick={googleSignUp}>
+                            <img src={google} className={styles.icon}></img>
+                            Sign Up with Google
+                        </button>
 
-                    <p className={styles.or}>or</p>
-
-                    <button className={styles.google} onClick={googleSignUp}>
-                        <img src={google} className={styles.icon}></img>
-                        Sign Up with Google
-                    </button>
-
-                    <div className={styles.no_account}>
-                        Already have an account?
-                        <Link to="/login">Login</Link>
+                        <div className={styles.login}>
+                            <p>
+                                Already have an account? 
+                                <Link to="/login"> Login</Link>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
