@@ -47,7 +47,7 @@ function SignUp() {
             <div className={styles.body}>
                 <div className={`container ${styles.display}`}>
                     <div className={styles.white_box}>
-                        <img className={styles.logo} src={logo}></img>
+                        <Link to="/"><img className={styles.logo} src={logo}></img></Link>
                         <p className={styles.sign_up}><b>Create your account</b></p>
 
                         <div className={styles.credentials}>
