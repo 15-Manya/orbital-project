@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { provider } from "../../Firebase";
 import { signInWithPopup } from 'firebase/auth';
 
@@ -27,7 +27,7 @@ function Login() {
                 // ...
             })
             .catch((error) => {
-                setError('Login failed,please try again!')
+                setError('Login failed, please try again!')
   });
     }
 
