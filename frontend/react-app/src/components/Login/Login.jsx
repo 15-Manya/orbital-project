@@ -54,7 +54,7 @@ function Login() {
             <div className={styles.body}>
 
                 <div className={styles.white_box}>
-                    <Link to="/"><img className={styles.logo} src={logo}></img></Link>
+                    <Link to="/experience"><img className={styles.logo} src={logo}></img></Link>
 
                     <p className={styles.login}><b>Login to your account</b></p>
 
