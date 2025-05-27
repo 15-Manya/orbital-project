@@ -7,8 +7,8 @@ function LandingPage() {
             <div className={styles.landingPage}>
                 <div className='container-sm'>
                     <div className="heading">
-                        <h1>Your next favorite book and podcast — recommended just for you.</h1>
-                        <p>Discover personalized reads and listens. One click away.</p>
+                        <h1 className={styles.main_heading}>Your next favorite book and podcast — recommended just for you.</h1>
+                        <p className={styles.sub_heading}>Discover personalized reads and listens. One click away.</p>
                     </div>
                     <div className="enter-email">
                         <input id = "email" type="email" placeholder='Enter your email'/>
