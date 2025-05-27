@@ -3,6 +3,8 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp'
 import PersonalizeExperience from './components/PersonalizeExperience/PersonalizeExperience';
+import PersonalizeLibrary from './components/PersonalizeLibrary/PersonalizeLibrary';
+
 import {BrowserRouter, Routes, Route} from 'react-router';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
         <Route path='/login' element ={<Login />} /> 
         <Route path='/signup' element = {<SignUp/>}/>
         <Route path='/experience' element = {<PersonalizeExperience/>}/> 
+        <Route path='/library' element = {<PersonalizeLibrary/>}/>
 
       </Routes>
     </BrowserRouter>
