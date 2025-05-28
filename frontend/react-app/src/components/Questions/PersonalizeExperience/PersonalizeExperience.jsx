@@ -1,4 +1,5 @@
 import styles from './PersonalizeExperience.module.css'
+import { Link } from 'react-router';
 
 
 function PersonalizeExperience(){
@@ -14,7 +15,7 @@ function PersonalizeExperience(){
                         <div className={styles.txt2}>We'll ask a few questions to tailor your book</div>
                         <div className={styles.txt3}>recommendations</div>
 
-                        <button className={styles.btn}>Let's go</button>
+                        <Link to="/q1"><button className={styles.btn}>Let's go</button></Link>
 
                 
                     </div>

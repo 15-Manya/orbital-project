@@ -1,9 +1,11 @@
-import styles from './GenreEnjoy.module.css';
+import styles from './Question1.module.css';
+import { Link } from 'react-router';
 
-function GenreEnjoy() {
+function Question1() {
     const genres = ['Action', 'Adventure', 'Comedy', 'Crime/Mystery', 'Fantasy', 'History', 'Horror', 'Romance', 'Thriller', 'Non-fiction', 'Others'];
     return (
-        <div className={`container ${styles.display}`}>
+        <div className={styles.body}>
+            <div className={`container ${styles.display}`}>
             <div className={styles.box}>
                 <h1>1. What genres do you enjoy reading?</h1>
                 <div className={styles.grid}>
@@ -14,13 +16,14 @@ function GenreEnjoy() {
                     ))}
                 </div>
                 <div className={styles.nav}>
-                    <p> &lt; Prev</p>
+                    <Link to='/personalizeExperience' className='link'><p> &lt; Prev</p></Link>
                     <p> | </p>
-                    <p> Next &gt;</p>
+                    <Link to="/q2" className='link'><p> Next &gt;</p></Link>
                 </div>
             </div>
+         </div>
         </div>
     );
 }
 
-export default GenreEnjoy;
+export default Question1;

@@ -1,7 +1,7 @@
 .body{
     height: 100vh;
     width: 100vw;
-    background-image: url("../../assets/background-orbital.png");
+    background-image: url("../../../assets/background-orbital.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -17,8 +17,6 @@
     height: 90vh;               /* Optional: full viewport height */
 
 }
-
-
 
 .body .flex .txtbox .txt1{
     color: #FFFFFF;

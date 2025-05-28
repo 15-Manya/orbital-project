@@ -41,6 +41,11 @@ input[type="checkbox"] {
   vertical-align: middle;
 }
 
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
 /*Utility Classes*/
 .container {
   max-width: 1200px;
