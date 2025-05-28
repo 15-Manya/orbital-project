@@ -1,5 +1,4 @@
-import styles from './PersonalizeLibrary.module.css'
-
+import styles from './PersonalizeLibrary.module.css';
 
 function PersonalizeLibrary(){
     return(
