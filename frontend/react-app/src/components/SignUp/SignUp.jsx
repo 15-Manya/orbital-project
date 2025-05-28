@@ -7,12 +7,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { provider } from "../../Firebase";
 import { signInWithPopup } from 'firebase/auth';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 function SignUp() {
     const [email, setEmail] = useState('');  //storing the email user input
     const [password, setPassword] = useState(''); //storing the password the user input
     const [rePassword, setRePassword] = useState(''); //storing the re-entered password
     const [error, setError] = useState(''); //storing the error at the current state
+    const navigate = useNavigate();
 
     const signup = () => {
         if(password != rePassword) {
@@ -24,6 +26,7 @@ function SignUp() {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log('User signed up : ', user);
+            navigate('/personalizeExperience');
             setError('');
         })
         .catch((error) => {
@@ -36,6 +39,7 @@ function SignUp() {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log("User signed up using Google Sign-Up");
+            navigate('/personalizeExperience');
             setError('');
         })
         .catch((error) => {
