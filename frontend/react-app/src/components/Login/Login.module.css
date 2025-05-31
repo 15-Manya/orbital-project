@@ -1,158 +1,141 @@
 .body{
-    margin: 0px;
-    padding: 0px;
     background-color:#3D4C7B;
     height: 100vh;
     width: 100vw;
-    padding-top: 1px;
     color: #000000;
-    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1px;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .body .white_box{
-    background-color:#F9F9F9;
-    width: 34.72vw;
-    /* height: 68.44vh; */
-    height: 80vh;
+    background-color:var(--semi-light-color);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15.78vh;
+    /* margin-top: 15.78vh; */
     border-radius: 16px;
-    /* padding-bottom: 2vh; */
+    padding: 20px 10px;
+    width: 40%;
 }
 
-.body .white_box .logo{
-    width: 16.25vw;
-    /* height: 6.11vh; */
-    margin-left: 9.1vw;
-    margin-top: 2.29vh;
-}
-
-.body .white_box .login{
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    height: 2.88vh;
-    font-size: 20px;
-    font-weight: 800;
-    padding-bottom: 30px;
-    margin: 0px;
-}
-
-.body .white_box .username{
-    margin-top: 1.55vh;
-    margin-left: 1.66vw;
-}
-
-.body .white_box .username .email, .body .white_box .username .password{
-    font-size: 18px;
-    padding: 0px;
-    margin: 0px;
-}
-
-.body .white_box .username .box1, .body .white_box .username .box2{
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000B2D;
-    border: 1px solid #000B2D;
-    border-radius: 12px;
-    width: 31vw;
-    height: 6.11vh;
-    /* padding-left: 20px; */
-}
-
-.body .white_box .username .password{
-    margin-top: 3.33vh;
-}
-
-.body .white_box .forgot_password{
-    margin-left: 23.96vw;
-    font-weight: 700;
-    font-size: 15px;
-    color:#4A6E98;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-}
-
-.body .white_box .remember_me{
-    /* margin-left: 2.5vw; */
-    /* margin-top: 2.67vh; */
-    width: 18.54vw;
-    height: 3.78vh;
-    font-size: 20px;
-    font-weight: 700;
-    display: flex;
-    gap: 1vw;
-    white-space: nowrap;
-}
-
-.body .white_box .login_button{
-    text-decoration: none;
-    width: 24.31vw;
-    /* height: 5.56vh; */
-    height: 7vh;
-    background-color:#3D4C7B;
+.body .white_box img {
     display: block;
-    border-radius: 8px;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 1.67vh; */
-    margin-top: 3vh;
-    color: #FFFFFF;
+}
+
+.body .white_box .login {
     text-align: center;
-    border: 2px solid black;
-    /* padding-top: 6px; */
-}
-
-.body .white_box .or{
-    text-align: center;
-    width: 17.4vw;
-    height: 4.88vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 700;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
-
-.body .white_box .google{
-    height: 6vh;
-    width: 18.82vw;
-    border: 1px solid black;
-    border-radius: 12px;
-    font-weight: 700;
-    margin-left: 8vw;
-    text-align: center;
-}
-
-.body .white_box .google .icon{
-    height: 2.5vh;
-    position: relative;
-    right: 30px;
-    top: 1px;
-}
-
-.body .white_box .no_account{
-    font-weight: 700;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 1.5vh;
-    padding: 0px;
-    font-size: 20px;
-}
-
-.body .white_box .no_account .sign_up{
-    text-decoration: none;
-    color: #4A6E98;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 5px 0 auto;
+    padding-bottom: 10px;
 }
 
 .error {
     color: red;
     font-size: 1rem;
     font-weight: 800;
-    /* padding: 10px; */
+    padding: 10px;
     text-align: center;
+}
+
+.credentials {
+    padding: 0 10px;
+}
+
+.credentials input {
+    background: none;
+    border: 1.2px solid #000;
+    border-radius: 10px;
+    width: 100%;
+    padding: 15px; 
+}
+
+.credentials p {
+    padding: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 0 0 10px;
+    margin: 5px auto;
+    margin-top: 15px;
+}
+
+.credentials input::placeholder {
+    color: #000;
+    font-size: 20;
+    padding-left: 5px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+
+.body .white_box .forgot_password{
+    color:#4A6E98;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    text-align: end;
+    font-weight: bold;
+    padding-bottom: 0;
+}
+
+.remember_me {
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 2vh;
+    text-align:justify;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.btndark {
+    background: var(--light-blue);
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+}
+
+.body .white_box .or {
+    margin: 10px;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.body .white_box .google {
+    border: 1px solid #000;
+    color: #000;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    width: 70%;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12.5px;
+}
+
+.body .white_box .google .icon {
+    margin: 0;
+}
+
+.sign_up p {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: bold;
+    margin: 10px 0 5px;
 }
