@@ -67,7 +67,7 @@ function Login() {
                         <input type="password" placeholder="Password" className={styles.box2} onChange={e => setPassword(e.target.value)}/>
                     </div>
 
-                    <a className={styles.forgot_password} href="#">forgot password?</a>
+                    <Link to="/forgot-password" className={styles.forgot_password}>forgot password?</Link>
 
                     <div className={styles.remember_me}>
                         <input type="checkbox" className={styles.select}/>Remember Me
