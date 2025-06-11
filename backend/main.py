@@ -3,12 +3,6 @@ import requests
 from sentence_transformers import SentenceTransformer
 app = FastAPI()
 
-
-# model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-# book_description = "Space opera novel about AI consciousness"
-# embedding = model.encode(book_description)
-# print(type(embedding))
-
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
     params = {
@@ -22,4 +16,20 @@ def get_google_books(query, max_results=40):
 # Example: Get 200 programming books
 books_data = get_google_books("programming")
 
-print(books_data[0])
+
+def create_book_description(book):
+    return f"""
+    {book.get('title', 'Untitled')} by {', '.join(book.get('authors', ['Unknown']))}.
+    Published: {book.get('publishedDate', 'N/A')}.
+    {book.get('description', 'No description available')}
+    Genres: {', '.join(book.get('categories', ['General']))}.
+    {book.get('pageCount', '')} pages. 
+    Average Rating: {book.get('averageRating', 'Unrated')}/5.
+    """
+
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+descriptions = [create_book_description(b) for b in books_data]
+embeddings = model.encode(descriptions).tolist()  # Converts to 384D vectors
+
+
+print(len(embeddings))
