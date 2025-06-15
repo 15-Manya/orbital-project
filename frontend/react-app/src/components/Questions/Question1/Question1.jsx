@@ -11,7 +11,7 @@ function Question1() {
                 <div className={styles.grid}>
                     {genres.map(genre => (
                         <label key={genre} className={styles.genre}>
-                            <input type="checkbox" />{genre}
+                            <input type="checkbox" />{genre} 
                         </label>
                     ))}
                 </div>
