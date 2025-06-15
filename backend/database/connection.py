@@ -1,0 +1,6 @@
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+#Setting up the database
+MONGO_URL = "mongodb+srv://techTitans:techTitansGo@nextbook.xui6btl.mongodb.net/?retryWrites=true&w=majority&appName=NextBook"
+client = MongoClient(MONGO_URL, server_api=ServerApi('1')) # Create a new client and connect to the server

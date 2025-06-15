@@ -4,7 +4,11 @@ from sentence_transformers import SentenceTransformer
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 import time
+from routes import check_dbconnection
+
+
 app = FastAPI()
+app.include_router(check_dbconnection.router)
 
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
@@ -114,3 +118,7 @@ for match in results['matches']: #'matches' is a list of dictionaries
     percentage_score = str(round(Score,2)*100) + '%'
     # print(recommended_book, percentage_score)
     print(f"Book: {recommended_book} , Similarity Score: {percentage_score}")
+
+
+
+
