@@ -5,9 +5,11 @@ from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 import time
 from routes import check_dbconnection
+from routes import create_user
 
 
 app = FastAPI()
+app.include_router(create_user.router)
 app.include_router(check_dbconnection.router)
 
 def get_google_books(query, max_results=40):
