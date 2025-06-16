@@ -16,7 +16,7 @@ function Question1() {
                     ))}
                 </div>
                 <div className={styles.nav}>
-                    <Link to='/personalizeExperience' className='link'><p> &lt; Prev</p></Link>
+                    <Link to='/age' className='link'><p> &lt; Prev</p></Link>
                     <p> | </p>
                     <Link to="/q2" className='link'><p> Next &gt;</p></Link>
                 </div>

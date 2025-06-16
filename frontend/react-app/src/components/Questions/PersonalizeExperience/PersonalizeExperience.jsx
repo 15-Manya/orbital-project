@@ -15,7 +15,7 @@ function PersonalizeExperience(){
                         <div className={styles.txt2}>We'll ask a few questions to tailor your book</div>
                         <div className={styles.txt3}>recommendations</div>
 
-                        <Link to="/q1"><button className={styles.btn}>Let's go</button></Link>
+                        <Link to="/age"><button className={styles.btn}>Let's go</button></Link>
 
                 
                     </div>
