@@ -1,0 +1,77 @@
+.body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../../../assets/background-orbital.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.body .flex{
+    text-align: center;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;      /* Stack vertically */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;     /* Center vertically if container has height */
+    height: 90vh;               /* Optional: full viewport height */
+
+}
+
+
+
+.body .flex .txtbox .txt1{
+    color: #FFFFFF;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 64px;
+
+}
+
+.body .flex .txtbox .txt2{
+    color: #FFFFFF;
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    margin-top: 30px;
+}
+.body .flex .txtbox .txt3{
+    color: #FFFFFF;
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+
+}
+
+.body .flex .txtbox .btn{
+    margin-top: 30px;
+    width: 150px;
+    height: 48px;
+    border-radius: 9px;
+    background: transparent;  
+    outline: none;
+    /* color: inherit;             */
+     color: #fff;
+     border-color: #fff;
+         
+
+}
+
+.body .flex .txtbox .text{
+    margin-top: 30px;
+    width: 500px;
+    height: 48px;
+    border-radius: 9px;
+    background: transparent;  
+    outline: none;
+    /* color: inherit;             */
+     color: #fff;
+     border-color: #fff;
+     margin-right: 10px;
+     text-align: center;
+}
+
+.body .flex .txtbox .text::placeholder{
+    color: white;
+    
+}
