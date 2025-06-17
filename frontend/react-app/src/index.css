@@ -41,6 +41,10 @@ input[type="checkbox"] {
   vertical-align: middle;
 }
 
+a {
+  cursor: pointer;
+}
+
 .link {
   text-decoration: none;
   color: #fff;
