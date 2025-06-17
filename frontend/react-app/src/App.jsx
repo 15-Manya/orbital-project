@@ -10,23 +10,26 @@ import PersonalizeLibrary from './components/Questions/PersonalizeLibrary/Person
 import ForgotPassword from './components/Login/ForgotPassWord/ForgotPassWord';
 import Age from './components/Questions/Age/Age';
 import {BrowserRouter, Routes, Route} from 'react-router';
+import { UserResponse } from './components/Questions/UserResponse';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element ={<LandingPage />}/>
-        <Route path='/login' element ={<Login />} /> 
-        <Route path='/signup' element = {<SignUp/>}/>
-        <Route path="/personalizeExperience" element={<PersonalizeExperience/>}/>
-        <Route path="/age" element={<Age/>}/>
-        <Route path="/q1" element={<Question1/>}/>
-        <Route path="/q2" element={<Question2/>}/>
-        <Route path='/q3' element={<Question3/>}/>
-        <Route path="/personalizeLibrary" element={<PersonalizeLibrary/>}/>
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-      </Routes>
-    </BrowserRouter>
+    <UserResponse>
+        <BrowserRouter>
+        <Routes>
+          <Route path='/' element ={<LandingPage />}/>
+          <Route path='/login' element ={<Login />} /> 
+          <Route path='/signup' element = {<SignUp/>}/>
+          <Route path="/personalizeExperience" element={<PersonalizeExperience/>}/>
+          <Route path="/age" element={<Age/>}/>
+          <Route path="/q1" element={<Question1/>}/>
+          <Route path="/q2" element={<Question2/>}/>
+          <Route path='/q3' element={<Question3/>}/>
+          <Route path="/personalizeLibrary" element={<PersonalizeLibrary/>}/>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Routes>
+      </BrowserRouter>
+    </UserResponse>
   );
 }
 
