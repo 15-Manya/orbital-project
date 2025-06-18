@@ -32,17 +32,26 @@ function PersonalizeLibrary() {
               profile_complete: true
             }),
         });
+        if (!response.ok) {
+          const error = await response.json();
+          console.log('error message from backend', error.detail)
+          if(error.detail == "Username already exists.") {
+            alert(error.detail)
+          }
+          else {
+            alert('There was an error saving your data. Please try again.');
+          }
+          return;
+        }
+        
+        const result = await response.json();
+        console.log('✅ Data saved:', result);
+        navigate('/home');
 
-      if (!response.ok) throw new Error('Failed to save user data');
-
-      const result = await response.json();
-      console.log('✅ Data saved:', result);
-
-      navigate('/home');
     } catch (error) {
       console.error('❌ Error saving data:', error);
       alert('There was an error saving your data. Please try again.');
-    }
+      }
   };
 
   return (
