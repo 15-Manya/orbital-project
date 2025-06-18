@@ -7,7 +7,7 @@ router = APIRouter()
 @router.post('/create-user') 
 def create_user(user : UserModel) :
     if user_collection.find_one({"username": user.username}) :
-        raise HTTPException(status_code = 400, detail = "Username already exists")
+        raise HTTPException(status_code = 400, detail = "Username already exists.")
     
     user_collection.insert_one(user.dict())
     return {'message': 'User created successfully'}
