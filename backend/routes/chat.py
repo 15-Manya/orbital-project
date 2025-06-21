@@ -27,8 +27,8 @@ def build_prompt(user_data, user_input) :
     if pastChats :
         user_prompt += 'These are some of the recent chats with the user:\n'
         for chat in pastChats:
-            user_msg = chat.get("user_message", "")
-            gpt_msg = chat.get("gpt_response", "")
+            user_msg = chat.get("userMessage", "")
+            gpt_msg = chat.get("gptResponse", "")
             user_prompt += f"- They said: \"{user_msg}\"\n  You replied: \"{gpt_msg}\"\n"
     
     user_prompt += f"\nNow they say: \"{user_input}\"\n"
