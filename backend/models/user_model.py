@@ -9,4 +9,3 @@ class UserModel(BaseModel) :
     genresToExplore: List[str]
     favBooks: List[str]
     profile_complete: bool
-    chatHistory: Optional[List[ChatEntry]] = []
