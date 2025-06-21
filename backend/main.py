@@ -7,6 +7,7 @@ import time
 from routes import check_dbconnection
 from routes import create_user
 from fastapi.middleware.cors import CORSMiddleware
+from routes.chat import router as chat_router
 
 
 app = FastAPI()
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(create_user.router)
 app.include_router(check_dbconnection.router)
+app.include_router(chat_router)
 
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
