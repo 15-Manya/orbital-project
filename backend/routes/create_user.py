@@ -11,3 +11,4 @@ def create_user(user : UserModel) :
     
     user_collection.insert_one(user.dict())
     return {'message': 'User created successfully'}
+
