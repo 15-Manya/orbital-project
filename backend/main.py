@@ -24,5 +24,3 @@ app.add_middleware(
 app.include_router(create_user.router)
 app.include_router(check_dbconnection.router)
 app.include_router(get_data.router)
-
-print(recommendations)

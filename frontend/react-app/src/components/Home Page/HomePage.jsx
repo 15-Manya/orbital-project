@@ -28,6 +28,7 @@ function HomePage(){
     
     // Return the response data (could be something from the server like a success message or object)
     console.log('Successfully sent Post Request')
+    console.log(responseData)
   } catch (error) {
     // If an error occurs, log it and return an error message
     console.error('Error occurred during the POST request:', error);
