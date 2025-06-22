@@ -6,6 +6,7 @@ from pinecone import ServerlessSpec
 import time
 from routes import check_dbconnection
 from routes import create_user
+from routes import get_data
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(create_user.router)
 app.include_router(check_dbconnection.router)
+app.include_router(get_data.router)
 
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
@@ -109,28 +111,28 @@ for i in range(0, len(vectors), 100):
 
 
 # Test query
-test_query = "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
-query_embedding = model.encode(test_query).tolist()
+test_query = "How to Win Frienda and Influence People"
+test_query2 = "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
 
-results = index.query(
-    vector=query_embedding,
-    top_k=5,
-    include_metadata=False
-)
+def get_recommendation(test_query):
+    query_embedding = model.encode(test_query).tolist()
 
-# print(results)
+    results = index.query(
+        vector=query_embedding,
+        top_k=5,
+        include_metadata=False
+    )
 
-# for match in results['matches']:
-    # print(f"{match['metadata']['title']} (Score: {match['score']:.2f})")
-
-for match in results['matches']: #'matches' is a list of dictionaries 
-    id = match['id']
-    recommended_book = books_data[int(id)].get('title','Untitled')
-    Score = match['score']
-    percentage_score = str(round(Score,2)*100) + '%'
-    # print(recommended_book, percentage_score)
-    print(f"Book: {recommended_book} , Similarity Score: {percentage_score}")
-
-
-
-
+    books = []
+    for match in results['matches']: #'matches' is a list of dictionaries 
+        id = match['id']
+        recommended_book = books_data[int(id)].get('title','Untitled')
+        Score = match['score']
+        percentage_score = str(round(Score,2)*100) + '%'
+        # print(recommended_book, percentage_score)
+        books = books + [recommended_book]
+        print(f"Book: {recommended_book} , Similarity Score: {percentage_score}")
+    return books
+    
+recommendations = get_recommendation(test_query)
+print(recommendations)
