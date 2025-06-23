@@ -4,10 +4,11 @@ import {useEffect,useState} from "react";
 
 function HomePage(){
     const [count,setCount] = useState(0)
+    const [info, setInfo] = useState('')
     const { userData, updateData } = useUser();
     useEffect(() => {
     getBooks();
-    });
+    },[count]);
 
 
     async function getBooks(){
@@ -29,6 +30,7 @@ function HomePage(){
     // Return the response data (could be something from the server like a success message or object)
     console.log('Successfully sent Post Request')
     console.log(responseData)
+    setInfo(responseData)
   } catch (error) {
     // If an error occurs, log it and return an error message
     console.error('Error occurred during the POST request:', error);
@@ -46,6 +48,7 @@ function HomePage(){
             <p>Hello {userData.username}, how are you?</p>
             <p> Count = {count}</p>
             <button onClick = {addCount}>Add</button>
+            <p> These are some details about your prefrences: {info.detail}</p>
         </>
         
 

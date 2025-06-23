@@ -10,12 +10,11 @@ def get_data(data : HomeModel):
     username = data.username
     info = user_collection.find_one({'username': 'Shamit'}, {'_id': 0})
     books = info['favBooks'] #list of the user's favourite books
-    # recommendations = [get_recommendation(book) for book in books]
-    recommendations = []
-    for book in books: 
-        recommendations = recommendations + get_recommendation(book) #recommendations is a list of tuples
+    set_1 = get_recommendation(books[0])
+    set_2 = get_recommendation(books[1])
+    set_3 = get_recommendation(books[2])
     
     
 
     # information = str(type(info))
-    return({'detail': 'data recieved', 'username': username, 'recommendations' : recommendations})
+    return({'detail': 'data recieved', 'username': username, 'set1': set_1, 'set2': set_2, 'set3': set_3})
