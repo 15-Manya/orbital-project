@@ -39,4 +39,4 @@ def get_recommendation(test_query):
         # print(f"Book: {recommended_book} , Similarity Score: {percentage_score}")
     return recommendation
     
-recommendations = get_recommendation(test_query)
+recommendations = get_recommendation(test_query) #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
