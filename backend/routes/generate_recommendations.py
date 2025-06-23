@@ -14,14 +14,29 @@ def get_recommendation(test_query):
     )
 
     books = []
+    links = []
     for match in results['matches']: #'matches' is a list of dictionaries 
         id = match['id']
         recommended_book = books_data[int(id)].get('title','Untitled')
+
+        #Get the links
+        image_links = books_data[int(id)].get('imageLinks',{})
+        image_url = None
+        if image_links:
+            # Prefer thumbnail, fallback to smallThumbnail
+            thumbnail_url = image_links.get('thumbnail') or image_links.get('smallThumbnail')
+            if thumbnail_url:
+                # Enhance image quality and force HTTPS
+                image_url = thumbnail_url.replace("zoom=1", "zoom=0").replace("http://", "https://")
+
+        links = links + [image_url]
+
         Score = match['score']
         percentage_score = str(round(Score,2)*100) + '%'
         # print(recommended_book, percentage_score)
         books = books + [recommended_book]
+        recommendation = list(zip(books,links))
         # print(f"Book: {recommended_book} , Similarity Score: {percentage_score}")
-    return books
+    return recommendation
     
 recommendations = get_recommendation(test_query)

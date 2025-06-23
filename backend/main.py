@@ -9,7 +9,7 @@ from routes import create_user
 from routes import get_data
 from fastapi.middleware.cors import CORSMiddleware
 from routes.generate_recommendations import recommendations
-
+from database.pinecone import books_data, get_google_books
 
 app = FastAPI()
 
@@ -24,3 +24,6 @@ app.add_middleware(
 app.include_router(create_user.router)
 app.include_router(check_dbconnection.router)
 app.include_router(get_data.router)
+
+
+print(recommendations)
