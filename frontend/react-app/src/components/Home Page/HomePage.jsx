@@ -1,5 +1,6 @@
 import { useUser } from '../Questions/UserResponse';
 import {useEffect,useState} from "react";
+import styles from './HomePage.module.css';
 
 
 function HomePage(){
@@ -8,7 +9,7 @@ function HomePage(){
     const { userData, updateData } = useUser();
     useEffect(() => {
     getBooks();
-    },[count]);
+    },[]);
 
 
     async function getBooks(){
@@ -30,6 +31,7 @@ function HomePage(){
     // Return the response data (could be something from the server like a success message or object)
     console.log('Successfully sent Post Request')
     console.log(responseData)
+    console.log(userData.favBooks)
     setInfo(responseData)
   } catch (error) {
     // If an error occurs, log it and return an error message
@@ -45,10 +47,73 @@ function HomePage(){
     
     return(
         <>
+            <br></br><br></br>
             <p>Hello {userData.username}, how are you?</p>
-            <p> Count = {count}</p>
-            <button onClick = {addCount}>Add</button>
-            <p> These are some details about your prefrences: {info.detail}</p>
+            <br></br>
+            <p> Here are some book recommendations customised just for you</p>
+            <br></br>
+            <br></br>
+
+            <div className = {styles.preference1}>
+
+                <h2>Because you like {userData.favBooks[0]}: </h2>
+                <p>{info.set1[0][0]}</p>
+                <img className = {styles.preferences} src = {info.set1[0][1]}></img>
+
+                <p>{info.set1[1][0]}</p>
+                <img className = {styles.preferences} src = {info.set1[1][1]}></img>
+
+                <p>{info.set1[2][0]}</p>
+                <img className = {styles.preferences} src = {info.set1[2][1]}></img>
+
+                <p>{info.set1[3][0]}</p>
+                <img className = {styles.preferences} src = {info.set1[3][1]}></img>
+
+                <p>{info.set1[4][0]}</p>
+                <img className = {styles.preferences} src = {info.set1[4][1]}></img>
+
+            </div>
+
+            <div className = {styles.preference2}>
+
+                <h2>Because you like {userData.favBooks[1]}: </h2>
+                <p>{info.set2[0][0]}</p>
+                <img className = {styles.preferences} src = {info.set2[0][1]}></img>
+
+                <p>{info.set2[1][0]}</p>
+                <img className = {styles.preferences} src = {info.set2[1][1]}></img>
+
+                <p>{info.set2[2][0]}</p>
+                <img className = {styles.preferences} src = {info.set2[2][1]}></img>
+
+                <p>{info.set2[3][0]}</p>
+                <img className = {styles.preferences} src = {info.set2[3][1]}></img>
+
+                <p>{info.set2[4][0]}</p>
+                <img className = {styles.preferences} src = {info.set2[4][1]}></img>
+
+            </div>
+
+            <div className = {styles.preference3}>
+
+                <h2>Because you like {userData.favBooks[1]}: </h2>
+                <p>{info.set3[0][0]}</p>
+                <img className = {styles.preferences} src = {info.set3[0][1]}></img>
+
+                <p>{info.set3[1][0]}</p>
+                <img className = {styles.preferences} src = {info.set3[1][1]}></img>
+
+                <p>{info.set3[2][0]}</p>
+                <img className = {styles.preferences} src = {info.set3[2][1]}></img>
+
+                <p>{info.set3[3][0]}</p>
+                <img className = {styles.preferences} src = {info.set3[3][1]}></img>
+
+                <p>{info.set3[4][0]}</p>
+                <img className = {styles.preferences} src = {info.set3[4][1]}></img>
+
+            </div>
+            
         </>
         
 

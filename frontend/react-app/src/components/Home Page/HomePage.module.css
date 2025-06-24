@@ -1,0 +1,15 @@
+.preference1{
+    color: pink
+}
+
+.preference1 .preferences{
+    height: 150px;
+}
+
+.preference2 .preferences{
+    height: 150px;
+}
+
+.preference3 .preferences{
+    height: 150px;
+}
