@@ -6,13 +6,17 @@ from pinecone import ServerlessSpec
 
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
-    params = {
-        "q": query,
-        "maxResults": max_results,
-        "key": "AIzaSyDqOV61F-dS3SLCO7CODBFLdbkP0sULfD0"
-    }
-    response = requests.get(base_url, params=params).json()
-    return [item['volumeInfo'] for item in response.get('items', [])]
+    results = []
+    for start in range(0,200, max_results):
+        params = {
+            "q": query,
+            "maxResults": max_results,
+            'startIndex': start,
+            "key": "AIzaSyDqOV61F-dS3SLCO7CODBFLdbkP0sULfD0"
+        }
+        response = requests.get(base_url, params=params).json()
+        results.extend([item['volumeInfo'] for item in response.get('items', [])])
+    return results
 
 
 #Get 40 books of each genre
