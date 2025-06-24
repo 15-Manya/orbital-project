@@ -16,7 +16,7 @@ def get_google_books(query, max_results=40):
 
 
 #Get 40 books of each genre
-genres = ["programming","history", "sci-fi", "romantic","thriller","fantasy","fiction","self-help"]
+genres = ["programming","history", "sci-fi", "romantic","thriller","fantasy","fiction","self-help", 'action', 'adventure', 'comedy', 'crime', 'mystery', 'fantasy','history','horror','romance', 'thriller', 'non-fiction']
 
 def get_book_data(genre_list): 
     data = []
