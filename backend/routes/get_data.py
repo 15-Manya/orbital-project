@@ -1,0 +1,20 @@
+from fastapi import APIRouter, HTTPException
+from models.home_model import HomeModel
+from routes.generate_recommendations import get_recommendation
+from database.connection import user_collection
+
+router = APIRouter()
+
+@router.post('/get_data')
+def get_data(data : HomeModel): 
+    username = data.username
+    info = user_collection.find_one({'username': 'Shamit'}, {'_id': 0})
+    books = info['favBooks'] #list of the user's favourite books
+    set_1 = get_recommendation(books[0])
+    set_2 = get_recommendation(books[1])
+    set_3 = get_recommendation(books[2])
+    
+    
+
+    # information = str(type(info))
+    return({'detail': 'data recieved', 'username': username, 'set1': set_1, 'set2': set_2, 'set3': set_3})

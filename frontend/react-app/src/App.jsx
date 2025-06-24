@@ -9,6 +9,7 @@ import PersonalizeExperience from './components/Questions/PersonalizeExperience/
 import PersonalizeLibrary from './components/Questions/PersonalizeLibrary/PersonalizeLibrary';
 import ForgotPassword from './components/Login/ForgotPassWord/ForgotPassWord';
 import Age from './components/Questions/Age/Age';
+import HomePage from './components/Home Page/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router';
 import { UserResponse } from './components/Questions/UserResponse';
 
@@ -27,6 +28,8 @@ function App() {
           <Route path='/q3' element={<Question3/>}/>
           <Route path="/personalizeLibrary" element={<PersonalizeLibrary/>}/>
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/home" element ={<HomePage/>} />
+
         </Routes>
       </BrowserRouter>
     </UserResponse>
