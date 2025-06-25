@@ -23,7 +23,7 @@ function Login() {
                 // Signed in 
                 const user = userCredential.user;
                 console.log('Sign in successful!')
-                navigate("/personalizeLibrary");
+                navigate("/home");
                 // ...
             })
             .catch((error) => {
@@ -36,7 +36,7 @@ function Login() {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log("User signed up using Google Sign-Up");
-            navigate("/personalizeLibrary");
+            navigate("/home");
             setError('');
         })
         .catch((error) => {

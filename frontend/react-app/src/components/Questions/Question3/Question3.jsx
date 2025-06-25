@@ -16,8 +16,8 @@ function Question3() {
       .map(book => book.trim())
       .filter(book => book !== '');
   
-    if (books.length === 0) {
-      alert("Please enter at least one favorite book.");
+    if (books.length < 3) {
+      alert("Please fill all the fields.");
       return;
     }
   
