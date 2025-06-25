@@ -1,8 +1,7 @@
 .body {
     padding-top: 1px;
     padding-bottom: 1px;
-    background-color: #f4f4f4;
-    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+    background: linear-gradient(270deg,rgba(244, 244, 244, 1) 0%, rgba(199, 212, 232, 1) 100%);
     background-attachment: fixed;
     background-repeat: repeat;
     color: var(--semi-light-color);
