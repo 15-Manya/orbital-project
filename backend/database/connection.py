@@ -9,7 +9,6 @@ client = MongoClient(MONGO_URL, server_api=ServerApi('1'), tlsCAFile=certifi.whe
 
 db = client['NextBook']
 user_collection = db['users']
-
-
+book_data = db['data']
 #user_collection.insert_one({"username": "manya"})
 #print(user_collection.find_one({"username": "manya"})

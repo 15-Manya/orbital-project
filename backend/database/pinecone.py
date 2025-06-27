@@ -2,7 +2,7 @@ import requests
 from sentence_transformers import SentenceTransformer
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
-
+from database.connection import book_data
 
 def get_google_books(query, max_results=40):
     base_url = "https://www.googleapis.com/books/v1/volumes"
@@ -29,7 +29,11 @@ def get_book_data(genre_list):
         data += genre_data
     return data 
 
-books_data = get_book_data(genres)
+if book_data.count_documents({}) == 0:
+    book_data.insert_one({'data': get_book_data(genres)})
+
+doc = book_data.find_one()
+books_data = doc['data']
 
 def create_book_description(book):
     return f"""
