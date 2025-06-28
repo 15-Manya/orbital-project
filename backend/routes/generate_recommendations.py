@@ -9,7 +9,7 @@ def get_recommendation(test_query):
 
     results = index.query(
         vector=query_embedding,
-        top_k=20,
+        top_k=30,
         include_metadata=False
     )
 
@@ -45,10 +45,7 @@ def get_recommendation(test_query):
         if item[0] not in seen:
             seen.add(item[0])
             unique_recommendations.append(item)
-    print(recommendation)
-    print('')
-    print(unique_recommendations)
-    final_recommendations = random.sample(unique_recommendations,5)
+    final_recommendations = random.sample(unique_recommendations,10)
 
     
     return final_recommendations
