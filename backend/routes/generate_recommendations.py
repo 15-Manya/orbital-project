@@ -9,13 +9,14 @@ def get_recommendation(test_query):
 
     results = index.query(
         vector=query_embedding,
-        top_k=8,
+        top_k=20,
         include_metadata=False
     )
 
     books = []
     links = []
-    print(results)
+    seen = set()
+    unique_recommendations = []
     for match in results['matches']: #'matches' is a list of dictionaries 
         id = match['id']
         recommended_book = books_data[int(id)].get('title','Untitled')
@@ -36,20 +37,22 @@ def get_recommendation(test_query):
         percentage_score = str(round(Score,2)*100) + '%'
         # print(recommended_book, percentage_score)
         books = books + [recommended_book]
-        recommendation = list(zip(books,links))
-        
+    recommendation = list(zip(books,links))
+
 
         #filter our duplicates
-        seen = set()
-        unique_recommendations = []
-        for item in recommendation: 
-            if item[0] not in seen:
-                seen.add(item[0])
-                unique_recommendations.append(item)
-    
+    for item in recommendation: 
+        if item[0] not in seen:
+            seen.add(item[0])
+            unique_recommendations.append(item)
+    print(recommendation)
+    print('')
+    print(unique_recommendations)
     final_recommendations = random.sample(unique_recommendations,5)
 
     
     return final_recommendations
     
-recommendations = get_recommendation(test_query) #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
+#recommendations = get_recommendation('Kite Runner') #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
+# recommendations2 = get_recommendation('Midnight Library')
+recommendations3 = get_recommendation('The Alchemist')
