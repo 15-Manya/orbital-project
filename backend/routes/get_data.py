@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post('/get_data')
 def get_data(data : HomeModel): 
     username = data.username
-    info = user_collection.find_one({'username': 'Shamit'}, {'_id': 0})
+    info = user_collection.find_one({'username': username}, {'_id': 0})
     books = info['favBooks'] #list of the user's favourite books
     set_1 = get_recommendation(books[0])
     set_2 = get_recommendation(books[1])
