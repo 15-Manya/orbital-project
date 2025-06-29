@@ -1,11 +1,13 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 class UserModel(BaseModel) :
-    username: str
-    age: int
-    preferredGenres: List[str]
-    genresToExplore: List[str]
-    favBooks: List[str]
+    uid: str
+    email: str
+    username: Optional[str] = None
+    age: Optional[int] = None
+    preferredGenres: Optional[List[str]] = None
+    genresToExplore: Optional[List[str]] = None
+    favBooks: Optional[List[str]] = None
     profile_complete: bool

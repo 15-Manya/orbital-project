@@ -2,16 +2,16 @@ import './index.css';
 import LandingPage from './components/LandingPage/LandingPage';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp'
-import Question1 from './components/Questions/Question1/Question1';
-import Question2 from './components/Questions/Question2/Question2';
-import Question3 from './components/Questions/Question3/Question3';
-import PersonalizeExperience from './components/Questions/PersonalizeExperience/PersonalizeExperience';
-import PersonalizeLibrary from './components/Questions/PersonalizeLibrary/PersonalizeLibrary';
+import Question1 from './components/Onboarding/Question1/Question1';
+import Question2 from './components/Onboarding/Question2/Question2';
+import Question3 from './components/Onboarding/Question3/Question3';
+import PersonalizeExperience from './components/Onboarding/PersonalizeExperience/PersonalizeExperience';
+import PersonalizeLibrary from './components/Onboarding/PersonalizeLibrary/PersonalizeLibrary';
 import ForgotPassword from './components/Login/ForgotPassWord/ForgotPassWord';
-import Age from './components/Questions/Age/Age';
+import Age from './components/Onboarding/Age/Age';
 import HomePage from './components/Home Page/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router';
-import { UserResponse } from './components/Questions/UserResponse';
+import { UserResponse } from './components/Onboarding/UserResponse';
 import Chat from './components/Chat/Chat';
 
 function App() {

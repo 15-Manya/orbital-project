@@ -1,4 +1,3 @@
-import { useUser } from '../Questions/UserResponse';
 import {useEffect,useState} from "react";
 import styles from './HomePage.module.css';
 import logo from "../../assets/logo-dark.png";
@@ -6,8 +5,8 @@ import ai_icon from "../../assets/ai-icon.png"
 import { Link, useNavigate} from 'react-router';
 
 function HomePage() {
-    const {userData} = useUser();
-    const username = userData.username;
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const username = storedUser?.username || 'User';
     const [count,setCount] = useState(0);
     const [info, setInfo] = useState('');
     const navigate = useNavigate();
@@ -22,7 +21,7 @@ function HomePage() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              username: userData.username
+              username: username
         })});
 
         if (!response.ok) {
@@ -35,7 +34,6 @@ function HomePage() {
     // Return the response data (could be something from the server like a success message or object)
     console.log('Successfully sent Post Request')
     console.log(responseData)
-    console.log(userData.favBooks)
     setInfo(responseData)
   } catch (error) {
     // If an error occurs, log it and return an error message
@@ -84,7 +82,7 @@ const handleKeyDown = (e) => {
                     </div>
                     <div className='container'>
                         <div className={styles.recommendation}>
-                            {(!userData?.favBooks || userData.favBooks.length < 2 || !info.set1 || !info.set2 || !info.set3)
+                            {(!storedUser?.favBooks || storedUser.favBooks.length < 2 || !info.set1 || !info.set2 || !info.set3)
                 ? <p>Loading your recommendations...</p>
                 : (
                     <>
@@ -100,7 +98,7 @@ const handleKeyDown = (e) => {
                             </div>
 
 
-                            <h2>Because you like {userData.favBooks[0]} - </h2>
+                            <h2>Because you like {storedUser.favBooks[0]} - </h2>
                             <div className={styles.display}>
                                 {info.set1.map(([title, img], index) => (
                                     <div key={index}>
@@ -110,7 +108,7 @@ const handleKeyDown = (e) => {
                                 ))}
                             </div>
                         
-                            <h2>Because you like {userData.favBooks[1]} - </h2>
+                            <h2>Because you like {storedUser.favBooks[1]} - </h2>
                             <div className={styles.display}>
                                 {info.set2.map(([title, img], index) => (
                                     <div key={index}>
@@ -120,7 +118,7 @@ const handleKeyDown = (e) => {
                                 ))}
                             </div>
                             
-                            <h2>Because you like {userData.favBooks[2]} - </h2>
+                            <h2>Because you like {storedUser.favBooks[2]} - </h2>
                             <div className={styles.display}>
                             {info.set3.map(([title, img], index) => (
                                 <div key={index}>

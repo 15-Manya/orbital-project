@@ -22,8 +22,23 @@ function Login() {
         .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log('Sign in successful!')
-                navigate("/home");
+                fetch(`http://localhost:8000/get-user?uid=${user.uid}`)
+                .then((res) => res.json())
+                .then((userData) => {
+                    localStorage.setItem('user', JSON.stringify(userData));
+                    console.log('Login successful!');
+                    console.log(userData)
+                    if (userData.profile_complete) {
+                        navigate("/home");
+                    } else {
+                        navigate("/personalizeExperience");
+                    }
+                    setError('');
+                })
+                .catch((error) => {
+                    console.error("Failed to fetch user data from backend", error);
+                    setError('Login failed, please try again!');
+                });
                 // ...
             })
             .catch((error) => {
@@ -35,9 +50,22 @@ function Login() {
         signInWithPopup(auth, provider)
         .then((userCredential) => {
             const user = userCredential.user;
-            console.log("User signed up using Google Sign-Up");
-            navigate("/home");
-            setError('');
+            fetch(`http://localhost:8000/get-user?uid=${user.uid}`)
+                .then((res) => res.json())
+                .then((userData) => {
+                    localStorage.setItem('user', JSON.stringify(userData));
+                    console.log("User signed in using Google Sign-In");
+                    if (userData.profile_complete) {
+                        navigate("/home");
+                    } else {
+                        navigate("/personalizeExperience");
+                    }
+                    setError('');
+                })
+                .catch((error) => {
+                    console.error("Failed to fetch user data from backend", error);
+                    setError('Login failed, please try again!');
+                });
         })
         .catch((error) => {
             // console.error("Google Sign-Up Unsuccessful : ", error.message)

@@ -14,23 +14,32 @@ function PersonalizeLibrary() {
       return;
     }
 
-    updateData({ username: usernameInput });
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const uid = storedUser?.uid;
+    console.log(uid);
+    const email = storedUser?.email;
+    console.log(email)
+    const updatedUser = {
+      uid,
+      email,
+      username: usernameInput,
+      age: userData.age ?? null,
+      preferredGenres: userData.preferredGenres ?? [],
+      genresToExplore: userData.genresToExplore ?? [],
+      favBooks: userData.favBooks ?? [],
+      profile_complete: true,
+    };
 
-    console.log("📦 Final JSON:", JSON.stringify({
-        ...userData,
-        username: usernameInput,
-        profile_complete: true
-      }, null, 2));
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    updateData(updatedUser);
+
+    console.log("📦 Final JSON:", JSON.stringify(updatedUser));
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/create-user', {
+        const response = await fetch('http://127.0.0.1:8000/update-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...userData,
-              username: usernameInput,
-              profile_complete: true
-            }),
+            body: JSON.stringify(updatedUser),
         });
         if (!response.ok) {
           const error = await response.json();
@@ -54,6 +63,12 @@ function PersonalizeLibrary() {
       }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+        handleSubmit();
+    }
+  };
+
   return (
     <div className={styles.body}>
       <div className={styles.flex}>
@@ -68,6 +83,7 @@ function PersonalizeLibrary() {
               placeholder='What should we call you?'
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
+              handleKeyDown={handleKeyDown}
             />
             <button className={styles.btn} onClick={handleSubmit}>
               Enter

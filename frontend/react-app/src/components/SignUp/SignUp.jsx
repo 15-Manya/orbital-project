@@ -17,7 +17,7 @@ function SignUp() {
     const navigate = useNavigate();
 
     const signup = () => {
-        if(password != rePassword) {
+        if(password !== rePassword) {
             setError("Passwords don't match")
             return;
         }
@@ -25,6 +25,15 @@ function SignUp() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
+            const userData = {
+                uid: user.uid,
+                email: user.email,
+                username:  '',
+            };
+
+            localStorage.setItem('user', JSON.stringify(userData));
+            createUser(user);
+
             console.log('User signed up : ', user);
             navigate('/personalizeExperience');
             setError('');
@@ -38,6 +47,15 @@ function SignUp() {
         signInWithPopup(auth, provider)
         .then((userCredential) => {
             const user = userCredential.user;
+            const userData = {
+                uid: user.uid,
+                email: user.email,
+                username:  '',
+            };
+
+            localStorage.setItem('user', JSON.stringify(userData));
+            createUser(user);
+
             console.log("User signed up using Google Sign-Up");
             navigate('/personalizeExperience');
             setError('');
@@ -52,6 +70,24 @@ function SignUp() {
             signup();
         }
     };
+
+    const createUser = async (user) => {
+        try {
+            fetch('http://localhost:8000/create-user', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    uid: user.uid,
+                    email: user.email,
+                    profile_complete: false
+                })
+            });
+        } catch(error) {
+            console.error("Error while creating user:", error);
+        }
+    }
 
     return (
         <>

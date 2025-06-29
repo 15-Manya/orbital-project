@@ -6,7 +6,8 @@ import logo from "../../assets/logo.png";
 function Chat() {
         const [userInput, setUserInput] = useState('');
         const [chatHistory, setChatHistory] = useState([]);
-        const username = 'Manaaaa';
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        const username = storedUser?.username || 'User';
 
         const handleSubmit = async () => {
             if(!userInput.trim())
@@ -65,7 +66,7 @@ function Chat() {
                                 key={index}
                                 className={msg.sender === 'user' ? styles.userMessage : styles.botMessage}
                             >
-                                <p>{msg.sender === 'user' ? 'User' : 'Bot'}</p>
+                                <p>{msg.sender === 'user' ? username : 'Bot'}</p>
                                 {msg.text}
                             </div>
                             ))} 
