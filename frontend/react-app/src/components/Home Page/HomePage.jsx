@@ -82,6 +82,17 @@ function HomePage() {
                 : (
                     <>
                         <div className={styles.display_preference}>
+                            <h2>Here are some general recommendations for you:</h2>
+                            <div className = {styles.display}>
+                                {info.general.map(([title, img], index) => (
+                                    <div key={index}>
+                                        <img className={styles.preferences} src={img} alt={title} />
+                                        <p>{title}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+
                             <h2>Because you like {userData.favBooks[0]}: </h2>
                             <div className={styles.display}>
                                 {info.set1.map(([title, img], index) => (
