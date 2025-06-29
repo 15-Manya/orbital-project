@@ -45,7 +45,7 @@ def create_book_description(book):
     Average Rating: {book.get('averageRating', 'Unrated')}/5.
     """
 
-#model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 #descriptions = [create_book_description(b) for b in books_data]
 #embeddings = model.encode(descriptions).tolist()  # Converts to 384D vectors
 
