@@ -1,9 +1,7 @@
 import { useUser } from '../Questions/UserResponse';
 import {useEffect,useState} from "react";
 import styles from './HomePage.module.css';
-import Navbar from '../Navbar/Navbar';
 import logo from "../../assets/logo-dark.png";
-import {Link} from "react-router";
 import ai_icon from "../../assets/ai-icon.png"
 
 function HomePage() {
@@ -62,7 +60,7 @@ function HomePage() {
                                 <ul>
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">Discover</a></li>
-                                    <li><a href="#">Chatbot</a></li>
+                                    <li><a href="/chat">Chatbot</a></li>
                                     <li><a href="#">Profile</a></li>
                                 </ul>
                         </div>

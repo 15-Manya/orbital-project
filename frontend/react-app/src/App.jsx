@@ -12,6 +12,7 @@ import Age from './components/Questions/Age/Age';
 import HomePage from './components/Home Page/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router';
 import { UserResponse } from './components/Questions/UserResponse';
+import Chat from './components/Chat/Chat';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/personalizeLibrary" element={<PersonalizeLibrary/>}/>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element ={<HomePage/>} />
+          <Route path='/chat' element = {<Chat />} />
 
         </Routes>
       </BrowserRouter>

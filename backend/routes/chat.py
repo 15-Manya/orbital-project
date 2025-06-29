@@ -1,11 +1,15 @@
 from fastapi import APIRouter, HTTPException
 from datetime import datetime
-import openai
+from openai import OpenAI
 from database.connection import user_collection
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
 
+
+load_dotenv()
 router = APIRouter()
-openai.api_key = "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"
+client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 
 
 def build_prompt(user_data, user_input) :
@@ -49,12 +53,12 @@ def chat_bot(username: str, user_input: str) :
     prompt = build_prompt(user_data, user_input)
 
     try :
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model = 'gpt-4',
             messages = prompt
         )
     
-        gpt_response = response['choices'][0]['message']['content'].strip()
+        gpt_response = response.choices[0].message.content.strip()
 
         chat_history = {
             'userMessage' : user_input,

@@ -103,6 +103,7 @@
 .display_preference .display {
     display: flex;
     gap: 15px;
+    overflow-x: auto;
 }
 
 .display_preference .preferences{
@@ -124,5 +125,3 @@
     color: #2C3E50;
     font-weight: 800;
 } 
-
-

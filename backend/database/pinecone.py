@@ -91,6 +91,7 @@ vectors = [
     for i in range(len(embeddings))
 ]
 
+
 # Upsert in batches of 100
-for i in range(0, len(vectors), 100):
-    index.upsert(vectors=vectors[i:i+100])
+#for i in range(0, len(vectors), 100):
+#    index.upsert(vectors=vectors[i:i+100])*/
