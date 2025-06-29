@@ -46,6 +46,13 @@ function SignUp() {
             console.error("Google Sign-Up Unsuccessful : ", error.message)
         });
     }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            signup();
+        }
+    };
+
     return (
         <>
             <div className={styles.body}>
@@ -57,13 +64,13 @@ function SignUp() {
                         <div className={styles.credentials}>
                             {error && <p className={styles.error}>{error}</p>}
                             <p className={styles.email}><b>Email</b></p>
-                            <input type="email" placeholder="Email" className={styles.box1} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="email" placeholder="Email" className={styles.box1} value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={handleKeyDown}/>
 
                             <p className={styles.password}><b>Password</b></p>
-                            <input type="password" placeholder="Password" className={styles.box2} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <input type="password" placeholder="Password" className={styles.box2} value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown}/>
 
                             <p className={styles.re_password}><b>Re-enter password</b></p>
-                            <input type="password" placeholder="Re-enter password" className={styles.box3} value={rePassword} onChange={(e) => setRePassword(e.target.value)}/>
+                            <input type="password" placeholder="Re-enter password" className={styles.box3} value={rePassword} onChange={(e) => setRePassword(e.target.value)} onKeyDown={handleKeyDown}/>
                         </div>
                         <div className={styles.remember_me}>
                             <input type="checkbox" id="remember" className={styles.select} />

@@ -2,9 +2,17 @@ import Navbar from '../Navbar/Navbar';
 import styles from './LandingPage.module.css';
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 
 function LandingPage() {
     const [email, setEmail] = useState('');
+    const navigate = useNavigate();
+    
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          navigate('/signup')
+        }
+    };
 
     return (
         <div className={styles.body}>
@@ -16,7 +24,7 @@ function LandingPage() {
                         <p className={styles.sub_heading}>Discover personalized reads and listens. One click away.</p>
                     </div>
                     <div className={styles.enter}>
-                        <input id = "email" type="email" placeholder='Enter your email' required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input id = "email" type="email" placeholder='Enter your email' required value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={handleKeyDown}/>
                         <Link to="/signup">
                             <button className={`btn ${styles.btndark}`}>Get Started</button>
                         </Link>

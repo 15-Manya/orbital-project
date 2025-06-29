@@ -3,12 +3,14 @@ import {useEffect,useState} from "react";
 import styles from './HomePage.module.css';
 import logo from "../../assets/logo-dark.png";
 import ai_icon from "../../assets/ai-icon.png"
+import { Link, useNavigate} from 'react-router';
 
 function HomePage() {
     const {userData} = useUser();
     const username = userData.username;
-    const [count,setCount] = useState(0)
-    const [info, setInfo] = useState('')
+    const [count,setCount] = useState(0);
+    const [info, setInfo] = useState('');
+    const navigate = useNavigate();
     useEffect(() => {
     getBooks();
     },[]);
@@ -41,7 +43,12 @@ function HomePage() {
     return { error: error.message }; // Return error message for further handling
   }
 }
-    
+
+const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      navigate('/chat')
+    }
+};
 
     function addCount(){
         setCount(c => c+1)
@@ -72,7 +79,7 @@ function HomePage() {
                         <p className={styles.sub_heading}>Find your next favorite read — handpicked just for you.</p>
                         <div className={styles.chatbot}>
                             <img src={ai_icon} alt="ai-icon" className={styles.ai_icon}/>
-                            <input type="text" placeholder='Tell me what you are looking for...'/>
+                            <input type="text" placeholder='Tell me what you are looking for...' onKeyDown={handleKeyDown}/>
                         </div>
                     </div>
                     <div className='container'>

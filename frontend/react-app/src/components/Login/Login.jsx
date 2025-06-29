@@ -47,6 +47,11 @@ function Login() {
         });
         }
 
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                handleLogin();
+            }
+        };
   
     
     return (
@@ -60,11 +65,11 @@ function Login() {
                         <div className={styles.credentials}>
                             <div className={styles.username}>
                                 {error && <p className={styles.error}>{error}</p>}
-                                <p className={styles.email}><b>Email or Username</b></p>
-                                <input type="text" placeholder="Email or Username" className={styles.box1} onChange={e => setEmail(e.target.value)}/>
+                                <p className={styles.email}><b>Email</b></p>
+                                <input type="text" placeholder="Email" className={styles.box1} onChange={e => setEmail(e.target.value)} onKeyDown={handleKeyDown}/>
 
                                 <p className={styles.password}><b>Password</b></p>
-                                <input type="password" placeholder="Password" className={styles.box2} onChange={e => setPassword(e.target.value)}/>
+                                <input type="password" placeholder="Password" className={styles.box2} onChange={e => setPassword(e.target.value)} onKeyDown={handleKeyDown}/>
                             </div>
                         </div>
 
