@@ -3,12 +3,15 @@ import random
 from openai import OpenAI
 import os 
 from dotenv import load_dotenv
+import os
+
+
 load_dotenv()
+client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 # Test query
 test_query = "Rich Dad Poor Dad"
 test_query2 = "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
 
-client = OpenAI()
 
 def get_ai_description(book_name):
     system_prompt = "You are a librarian. Your job is to provide a detailed summary of a book based on it's title. Your description must include, but not limited to, the name, author, genre, as well as a detailed (minimum 100 word) description on what the book is about. Make the language in a tone that a librarian would use to give details about a book."

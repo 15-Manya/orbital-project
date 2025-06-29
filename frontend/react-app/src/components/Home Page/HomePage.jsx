@@ -82,7 +82,7 @@ function HomePage() {
                 : (
                     <>
                         <div className={styles.display_preference}>
-                            <h2>Here are some general recommendations for you:</h2>
+                            <h2>Recommended for you -</h2>
                             <div className = {styles.display}>
                                 {info.general.map(([title, img], index) => (
                                     <div key={index}>
@@ -93,7 +93,7 @@ function HomePage() {
                             </div>
 
 
-                            <h2>Because you like {userData.favBooks[0]}: </h2>
+                            <h2>Because you like {userData.favBooks[0]} - </h2>
                             <div className={styles.display}>
                                 {info.set1.map(([title, img], index) => (
                                     <div key={index}>
@@ -103,7 +103,7 @@ function HomePage() {
                                 ))}
                             </div>
                         
-                            <h2>Because you like {userData.favBooks[1]}: </h2>
+                            <h2>Because you like {userData.favBooks[1]} - </h2>
                             <div className={styles.display}>
                                 {info.set2.map(([title, img], index) => (
                                     <div key={index}>
@@ -113,7 +113,7 @@ function HomePage() {
                                 ))}
                             </div>
                             
-                            <h2>Because you like {userData.favBooks[2]}: </h2>
+                            <h2>Because you like {userData.favBooks[2]} - </h2>
                             <div className={styles.display}>
                             {info.set3.map(([title, img], index) => (
                                 <div key={index}>
