@@ -13,6 +13,7 @@ import HomePage from './components/Home Page/HomePage';
 import {BrowserRouter, Routes, Route} from 'react-router';
 import { UserResponse } from './components/Onboarding/UserResponse';
 import Chat from './components/Chat/Chat';
+import SearchPage  from './components/SearchPage/SearchPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element ={<HomePage/>} />
           <Route path='/chat' element = {<Chat />} />
+          <Route path="/search" element = {<SearchPage />}/> 
 
         </Routes>
       </BrowserRouter>

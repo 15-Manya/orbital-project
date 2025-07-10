@@ -34,4 +34,4 @@ app.include_router(get_data.router)
 
 # print(recommendations3)
 # print(recommendations2)
-print(recommendations3)
+# print(recommendations3)

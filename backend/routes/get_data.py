@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from models.home_model import HomeModel
+from models.search_model import Search
 from routes.generate_recommendations import get_recommendation, get_general_recommendation
 from database.connection import user_collection
 
@@ -19,3 +20,10 @@ def get_data(data : HomeModel):
 
     # information = str(type(info))
     return({'detail': 'data recieved', 'username': username, 'set1': set_1, 'set2': set_2, 'set3': set_3, 'general': general})
+
+
+@router.post('/search_data')
+def search_data(data : Search): 
+    book_name = data.book
+    recos = get_recommendation(book_name)
+    return ({'detail': 'data recieved my man', 'recommendations': recos})

@@ -96,7 +96,7 @@ def get_general_recommendation(book1, book2, book3):
 
 def get_recommendation(book_name):
     description = get_ai_description(book_name)
-    print('Description: ', description)
+    # print('Description: ', description)
     query_embedding = model.encode(description).tolist()
 
     results = index.query(

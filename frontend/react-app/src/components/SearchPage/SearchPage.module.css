@@ -1,0 +1,29 @@
+.body{ 
+    background-color: cyan;
+}
+
+.body .display_preference .display {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.body .display_preference .preferences{
+    height: 250px;
+    width: 160px;
+    border-radius: 10px;
+    display: block;
+}
+
+.body .display_preference h2 {
+    padding: 10px 5px;
+}
+
+.body .display_preference p{
+    display: block;
+    max-width: 160px;
+    text-align: center;
+    padding: 10px;
+    color: #2C3E50;
+    font-weight: 800;
+} 
