@@ -94,14 +94,14 @@ def get_general_recommendation(book1, book2, book3):
     return final_recommendations
 
 
-def get_recommendation(book_name):
+def get_recommendation(book_name, number = 10):
     description = get_ai_description(book_name)
     # print('Description: ', description)
     query_embedding = model.encode(description).tolist()
 
     results = index.query(
         vector=query_embedding,
-        top_k=30,
+        top_k=50,
         include_metadata=False
     )
 
@@ -137,7 +137,7 @@ def get_recommendation(book_name):
         if item[0] not in seen:
             seen.add(item[0])
             unique_recommendations.append(item)
-    final_recommendations = random.sample(unique_recommendations,10)
+    final_recommendations = random.sample(unique_recommendations,number)
 
     
     return final_recommendations

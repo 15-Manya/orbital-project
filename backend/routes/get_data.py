@@ -25,5 +25,5 @@ def get_data(data : HomeModel):
 @router.post('/search_data')
 def search_data(data : Search): 
     book_name = data.book
-    recos = get_recommendation(book_name)
+    recos = get_recommendation(book_name,15)
     return ({'detail': 'data recieved my man', 'recommendations': recos})

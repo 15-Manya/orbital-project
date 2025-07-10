@@ -51,14 +51,14 @@ function SearchPage(){
             <div>
                 <h2>Here are some books related to {bookname}</h2>
 
-                <div className={styles.display_preference}>
+                {/* <div className={styles.display_preference}>
                     {searchBooks.map(([title, img], index) => (
                         <div key={index} className = {styles.display}>
                             <img className = {styles.preferences} src={img} alt={title} />
                             <p>{title}</p>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
         </div>
     
