@@ -64,7 +64,7 @@ const handleKeyDown = (e) => {
                         <div className={styles.main_menu}>
                                 <ul>
                                     <li><a href="#">Home</a></li>
-                                    <li><a href="#">Discover</a></li>
+                                    <li><a href="/search">Discover</a></li>
                                     <li><a href="/chat">Chatbot</a></li>
                                     <li><a href="#">Profile</a></li>
                                 </ul>
