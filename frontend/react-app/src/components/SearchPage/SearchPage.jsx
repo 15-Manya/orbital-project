@@ -1,4 +1,5 @@
 import styles from './SearchPage.module.css'
+import logo from "../../assets/logo-dark.png";
 import { useState } from 'react';
 function SearchPage(){
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -43,24 +44,41 @@ function SearchPage(){
     return(
 
         <div className = {styles.body}>
-            <p>Hello {username}, wanna search some books? Let's go!</p>
-            <br></br>
-            <input type="text" placeholder="What would you like to search for today?" value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}></input>
-            <button onClick={(e) => handleSearch(e)}>Search</button>
-            <br></br>
-            
-            <div>
-                <h2>Here are some books related to {bookname}</h2>
-
-                {<div className={styles.display_preference}>
-                    {searchBooks.map(([title, img], index) => (
-                        <div key={index} className = {styles.display}>
-                            <img className = {styles.preferences} src={img} alt={title} />
-                            <p>{title}</p>
+            <nav className={styles.navbar}>
+                <div className={`container ${styles.flexContainer}`}>
+                    <div className={styles.logo}>
+                        <a href="/home">
+                            <img src={logo} alt="logo" />
+                        </a>
+                    </div>
+                    <div className={styles.main_menu}>
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                           <li><a href="/chat">Chatbot</a></li>
+                            <li><a href="#">Profile</a></li>
+                        </ul>
+                     </div>
+                </div>
+            </nav>
+            <div className="container">
+                <div className={styles.discover}>
+                <h1 className={styles.heading}>Start exploring 📚</h1>
+                <input type="text" placeholder="What would you like to search for today?" value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)} onKeyDown={(e) => handleSearch(e)}></input>
+                    <div>
+                    <div className={styles.display_preference}>
+                        <h2>Here are some books related to {bookname} </h2>
+                        <div className={styles.display}>
+                            {searchBooks.map(([title, img], index) => (
+                                <div key={index}>
+                                    <img className = {styles.preferences} src={img} alt={title} />
+                                    <p title={title}>{title}</p>
+                                </div>
+                            ))}
+                        </div> 
                         </div>
-                    ))}
-                </div> }
+                    </div>
+                </div>
             </div>
         </div>
     

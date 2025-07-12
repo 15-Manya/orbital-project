@@ -1,29 +1,105 @@
-.body{ 
-    background-color: cyan;
+.body {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background: linear-gradient(270deg,rgba(244, 244, 244, 1) 0%, rgba(199, 212, 232, 1) 100%);
+    background-attachment: fixed;
+    background-repeat: repeat;
+    color: var(--semi-light-color);
+    text-align: center;
+    min-height: 100vh;
 }
 
-.body .display_preference .display {
+.navbar {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.navbar img {
+    width: 80%;
+    height: auto;
+    align-self: center;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .main_menu ul {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li a {
+    padding: 10px 20px;
+    display: block;
+    font-weight: 800;
+    font-size: 1.2rem;
+    transition: 0.5s;
+    color: #1A2E5C;
+}
+
+
+
+.discover .heading {
+    color: #1B1F3B;
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.discover input {
+    width: 80%;
+    padding: 18px;
+    background-color: #0a0f15;
+    color: #eee;
+    opacity: 0.7;
+}
+
+.discover input::placeholder {
+    font-size: small;
+    color: #bbb;
+}
+
+.discover .btncolor {
+    color : #0a0f15;
+    font-weight: 800;
+    border: 2px solid #0a0f15;
+    padding: 15px 0;
+}
+
+.discover h2 {
+    text-align: left;
+    color: #2C3E50;
+    font-weight: bold;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 2rem;
+}
+
+.display_preference .display {
     display: flex;
     gap: 15px;
-    overflow-x: auto;
+    flex-wrap: wrap;
 }
 
-.body .display_preference .preferences{
-    height: 250px;
-    width: 160px;
+.display_preference .preferences{
+    height: 280px;
+    width: 180px;
     border-radius: 10px;
     display: block;
 }
 
-.body .display_preference h2 {
-    padding: 10px 5px;
-}
-
-.body .display_preference p{
+.display_preference p{
     display: block;
-    max-width: 160px;
+    max-width: 180px;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     color: #2C3E50;
     font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    cursor: default;
 } 

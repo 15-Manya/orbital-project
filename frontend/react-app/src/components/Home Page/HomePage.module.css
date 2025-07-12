@@ -124,4 +124,8 @@
     padding: 10px;
     color: #2C3E50;
     font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    cursor: default;
 } 
