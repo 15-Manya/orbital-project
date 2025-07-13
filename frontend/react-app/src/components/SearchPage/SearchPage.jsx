@@ -7,6 +7,7 @@ function SearchPage(){
     const [searchBooks,setSearchBooks] = useState([]);
     const [bookname,setBookName] = useState('');
     const [inputValue, setInputValue] = useState('');
+    const [selectedBook, setSelectedBook] = useState('');
 
     async function handleSearch(e){
         //e.preventDefault();
@@ -41,6 +42,14 @@ function SearchPage(){
     return { error: error.message }; // Return error message for further handling
   }
 }
+
+const handleClick = (book) => {
+    setSelectedBook(book);
+}
+
+const handleClose = () => {
+    setSelectedBook('');
+}
     return(
 
         <div className = {styles.body}>
@@ -71,7 +80,7 @@ function SearchPage(){
                         <div className={styles.display}>
                             {searchBooks.map(([title, img, desc], index) => (
                                 <div key={index}>
-                                    <div className={styles.bookCard}>
+                                    <div className={styles.bookCard} onClick={() => handleClick([title, img, desc])}>
                                         <img className={styles.preferences} src={img} alt={title} />
                                             <p className={styles.description}>{desc}</p>
                                     </div>
@@ -81,6 +90,20 @@ function SearchPage(){
                         </div> 
                         </div>
                     </div>
+                    {selectedBook && (
+                                <>
+                                <div className={styles.popup}>
+                                    <div className={styles.card}>
+                                            <button className={styles.close} onClick={() => handleClose()}> ✕ </button>
+                                        <h3>{selectedBook[0]}</h3>
+                                        <div className={styles.content}>
+                                            <img src={selectedBook[1]} alt="book image" />
+                                            <p>{selectedBook[2]}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </>
+                            )}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ function HomePage() {
     const username = storedUser?.username || 'User';
     const [count,setCount] = useState(0);
     const [info, setInfo] = useState('');
+    const [selectedBook, setSelectedBook] = useState('');
     const navigate = useNavigate();
     useEffect(() => {
     getBooks();
@@ -47,6 +48,14 @@ const handleKeyDown = (e) => {
       navigate('/chat')
     }
 };
+
+const handleClick = (book) => {
+    setSelectedBook(book);
+}
+
+const handleClose = () => {
+    setSelectedBook('');
+}
 
     function addCount(){
         setCount(c => c+1)
@@ -91,7 +100,7 @@ const handleKeyDown = (e) => {
                             <div className = {styles.display}>
                                 {info.general.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <div className={styles.bookCard}>
+                                        <div className={styles.bookCard} onClick={() => handleClick([title, img, desc])}>
                                             <img className={styles.preferences} src={img} alt={title} />
                                             <p className={styles.description}>{desc}</p>
                                         </div>
@@ -105,7 +114,7 @@ const handleKeyDown = (e) => {
                             <div className={styles.display}>
                                 {info.set1.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <div className={styles.bookCard}>
+                                        <div className={styles.bookCard} onClick={() => handleClick([title, img, desc])}>
                                             <img className={styles.preferences} src={img} alt={title} />
                                             <p className={styles.description}>{desc}</p>
                                         </div>
@@ -118,7 +127,7 @@ const handleKeyDown = (e) => {
                             <div className={styles.display}>
                                 {info.set2.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <div className={styles.bookCard}>
+                                        <div className={styles.bookCard} onClick={() => handleClick([title, img, desc])}>
                                             <img className={styles.preferences} src={img} alt={title} />
                                             <p className={styles.description}>{desc}</p>
                                         </div>
@@ -131,7 +140,7 @@ const handleKeyDown = (e) => {
                             <div className={styles.display}>
                             {info.set3.map(([title, img, desc], index) => (
                                 <div key={index}>
-                                    <div className={styles.bookCard}>
+                                    <div className={styles.bookCard} onClick={() => handleClick([title, img, desc])}>
                                         <img className={styles.preferences} src={img} alt={title} />
                                         <p className={styles.description}>{desc}</p>
                                     </div>
@@ -143,6 +152,20 @@ const handleKeyDown = (e) => {
                         </>
                 )}
                         </div>
+                            {selectedBook && (
+                                <>
+                                <div className={styles.popup}>
+                                    <div className={styles.card}>
+                                            <button className={styles.close} onClick={() => handleClose()}> ✕ </button>
+                                        <h3>{selectedBook[0]}</h3>
+                                        <div className={styles.content}>
+                                            <img src={selectedBook[1]} alt="book image" />
+                                            <p>{selectedBook[2]}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </>
+                            )}
                     </div>
                 </div>
 
