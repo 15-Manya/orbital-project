@@ -58,6 +58,7 @@ def get_general_recommendation(book1, book2, book3):
 
     books = []
     links = []
+    description = []
     seen = set()
     unique_recommendations = []
     for match in results['matches']: #'matches' is a list of dictionaries 
@@ -74,13 +75,18 @@ def get_general_recommendation(book1, book2, book3):
                 # Enhance image quality and force HTTPS
                 image_url = thumbnail_url.replace("zoom=1", "zoom=0").replace("http://", "https://")
 
-        links = links + [image_url]
+        links.append(image_url)
+
+        #Get the descriptions
+        book_description = books_data[int(id)].get('description', 'No description available')
+        description.append(book_description)
 
         Score = match['score']
         percentage_score = str(round(Score,2)*100) + '%'
         # print(recommended_book, percentage_score)
-        books = books + [recommended_book]
-    recommendation = list(zip(books,links))
+        #print(description)
+        books.append(recommended_book)
+    recommendation = list(zip(books,links,description))
 
 
         #filter our duplicates
@@ -88,9 +94,7 @@ def get_general_recommendation(book1, book2, book3):
         if item[0] not in seen:
             seen.add(item[0])
             unique_recommendations.append(item)
-    final_recommendations = random.sample(unique_recommendations,10)
-
-    
+    final_recommendations = random.sample(unique_recommendations,10)    
     return final_recommendations
 
 
@@ -107,6 +111,7 @@ def get_recommendation(book_name, number = 10):
 
     books = []
     links = []
+    description = []
     seen = set()
     unique_recommendations = []
     for match in results['matches']: #'matches' is a list of dictionaries 
@@ -123,14 +128,17 @@ def get_recommendation(book_name, number = 10):
                 # Enhance image quality and force HTTPS
                 image_url = thumbnail_url.replace("zoom=1", "zoom=0").replace("http://", "https://")
 
-        links = links + [image_url]
+        links.append(image_url)
+
+        #Get the descriptions
+        book_description = books_data[int(id)].get('description', 'No description available')
+        description.append(book_description)
 
         Score = match['score']
         percentage_score = str(round(Score,2)*100) + '%'
         # print(recommended_book, percentage_score)
-        books = books + [recommended_book]
-    recommendation = list(zip(books,links))
-
+        books.append(recommended_book)
+    recommendation = list(zip(books,links, description))
 
         #filter our duplicates
     for item in recommendation: 
@@ -142,6 +150,6 @@ def get_recommendation(book_name, number = 10):
     
     return final_recommendations
     
-recommendations3 = get_recommendation('Atomic Habits') #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
+recommendations3 = get_general_recommendation('Atomic Habits', 'Midnight Library', 'The Alchemist') #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
 # recommendations2 = get_recommendation('Midnight Library')
 # recommendations3 = get_recommendation('The Alchemist')

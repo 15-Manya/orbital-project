@@ -80,8 +80,16 @@
 
 .display_preference .display {
     display: flex;
+    flex-wrap: wrap;        
     gap: 15px;
-    flex-wrap: wrap;
+}
+
+.bookCard {
+    position: relative;
+    width: 180px;
+    height: 280px;
+    border-radius: 10px;
+    display: inline-block;
 }
 
 .display_preference .preferences{
@@ -91,15 +99,45 @@
     display: block;
 }
 
-.display_preference p{
+.display_preference h2 {
+    padding: 10px 5px;
+}
+
+
+.display_preference .title{
     display: block;
     max-width: 180px;
     text-align: center;
-    padding: 20px;
-    color: #2C3E50;
-    font-weight: 800;
-    white-space: nowrap;
+    padding: 10px;
     overflow: hidden; 
     text-overflow: ellipsis;
     cursor: default;
+    color: #2C3E50;
+    font-weight: 800;
+    white-space: nowrap;
 } 
+
+.description {
+    position: absolute;
+    text-align: right;
+    box-sizing: border-box;
+    max-width: 170px;
+    max-height: 270px;
+    font-size: 14px;
+    margin: 0;
+    top: 0;
+    padding: 5px;
+    padding-right: 0;
+    overflow-y: auto; 
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.bookCard:hover img {
+    filter: brightness(25%);
+    transition: filter 0.3s ease;
+}
+.bookCard:hover .description {
+    opacity: 1;
+}

@@ -89,10 +89,13 @@ const handleKeyDown = (e) => {
                         <div className={styles.display_preference}>
                             <h2>Recommended for you -</h2>
                             <div className = {styles.display}>
-                                {info.general.map(([title, img], index) => (
+                                {info.general.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <img className={styles.preferences} src={img} alt={title} />
-                                        <p>{title}</p>
+                                        <div className={styles.bookCard}>
+                                            <img className={styles.preferences} src={img} alt={title} />
+                                            <p className={styles.description}>{desc}</p>
+                                        </div>
+                                        <p className={styles.title} title={title}>{title}</p>
                                     </div>
                                 ))}
                             </div>
@@ -100,30 +103,39 @@ const handleKeyDown = (e) => {
 
                             <h2>Because you like {storedUser.favBooks[0]} - </h2>
                             <div className={styles.display}>
-                                {info.set1.map(([title, img], index) => (
+                                {info.set1.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <img className={styles.preferences} src={img} alt={title} />
-                                        <p>{title}</p>
+                                        <div className={styles.bookCard}>
+                                            <img className={styles.preferences} src={img} alt={title} />
+                                            <p className={styles.description}>{desc}</p>
+                                        </div>
+                                        <p className={styles.title} title={title}>{title}</p>
                                     </div>
                                 ))}
                             </div>
                         
                             <h2>Because you like {storedUser.favBooks[1]} - </h2>
                             <div className={styles.display}>
-                                {info.set2.map(([title, img], index) => (
+                                {info.set2.map(([title, img, desc], index) => (
                                     <div key={index}>
-                                        <img className={styles.preferences} src={img} alt={title} />
-                                        <p>{title}</p>
+                                        <div className={styles.bookCard}>
+                                            <img className={styles.preferences} src={img} alt={title} />
+                                            <p className={styles.description}>{desc}</p>
+                                        </div>
+                                        <p className={styles.title} title={title}>{title}</p>
                                     </div>
                                 ))}
                             </div>
                             
                             <h2>Because you like {storedUser.favBooks[2]} - </h2>
                             <div className={styles.display}>
-                            {info.set3.map(([title, img], index) => (
+                            {info.set3.map(([title, img, desc], index) => (
                                 <div key={index}>
-                                    <img className={styles.preferences} src={img} alt={title} />
-                                    <p>{title}</p>
+                                    <div className={styles.bookCard}>
+                                        <img className={styles.preferences} src={img} alt={title} />
+                                        <p className={styles.description}>{desc}</p>
+                                    </div>
+                                    <p className={styles.title} title={title}>{title}</p>
                                 </div>
                             ))}
                             </div>

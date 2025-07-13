@@ -69,10 +69,13 @@ function SearchPage(){
                     <div className={styles.display_preference}>
                         <h2>Here are some books related to {bookname} </h2>
                         <div className={styles.display}>
-                            {searchBooks.map(([title, img], index) => (
+                            {searchBooks.map(([title, img, desc], index) => (
                                 <div key={index}>
-                                    <img className = {styles.preferences} src={img} alt={title} />
-                                    <p title={title}>{title}</p>
+                                    <div className={styles.bookCard}>
+                                        <img className={styles.preferences} src={img} alt={title} />
+                                            <p className={styles.description}>{desc}</p>
+                                    </div>
+                                    <p className={styles.title} title={title}>{title}</p>
                                 </div>
                             ))}
                         </div> 
