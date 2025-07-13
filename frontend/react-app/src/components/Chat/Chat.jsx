@@ -52,7 +52,7 @@ function Chat() {
                         <div className={styles.main_menu}>
                             <ul>
                                 <li><a href="/home">Home</a></li>
-                                <li><a href="#">Discover</a></li>
+                                <li><a href="/search">Discover</a></li>
                                 <li><a href="#">Profile</a></li>
                             </ul>
                         </div>
