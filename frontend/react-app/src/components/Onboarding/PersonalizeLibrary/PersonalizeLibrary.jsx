@@ -27,6 +27,7 @@ function PersonalizeLibrary() {
       preferredGenres: userData.preferredGenres ?? [],
       genresToExplore: userData.genresToExplore ?? [],
       favBooks: userData.favBooks ?? [],
+      readBooks: userData.favBooks ?? [],
       profile_complete: true,
     };
 
@@ -44,7 +45,7 @@ function PersonalizeLibrary() {
         if (!response.ok) {
           const error = await response.json();
           console.log('error message from backend', error.detail)
-          if(error.detail == "Username already exists.") {
+          if(error.detail === "Username already exists.") {
             alert(error.detail)
           }
           else {
@@ -83,7 +84,7 @@ function PersonalizeLibrary() {
               placeholder='What should we call you?'
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
-              handleKeyDown={handleKeyDown}
+              onKeyDown={handleKeyDown}
             />
             <button className={styles.btn} onClick={handleSubmit}>
               Enter

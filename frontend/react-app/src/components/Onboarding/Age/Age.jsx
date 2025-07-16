@@ -8,6 +8,17 @@ function Age() {
   const [ageInput, setAgeInput] = useState(userData.age || '');
   const navigate = useNavigate();
 
+  const handleNextEnter = (e) => {
+    const age = parseInt(ageInput, 10);
+    if(e.key === 'Enter') {
+    if (!isNaN(age) && age > 8 && age < 100) {
+        updateData({ age }); 
+      navigate('/q1'); 
+    } else {
+      alert('Please enter a valid age between 9 and 99');
+    }}
+  };
+
   const handleNext = () => {
     const age = parseInt(ageInput, 10);
     if (!isNaN(age) && age > 8 && age < 100) {
@@ -19,7 +30,7 @@ function Age() {
   };
 
   return (
-    <div className={styles.body}>
+    <div className={styles.body} tabIndex={0} onKeyDown={e => handleNextEnter(e)}>
       <div className={styles.flex}>
         <div className={styles.txtbox}>
           <div className={styles.txt1}>✨Please enter your age✨</div>

@@ -2,19 +2,23 @@ import {useEffect,useState} from "react";
 import styles from './HomePage.module.css';
 import logo from "../../assets/logo-dark.png";
 import ai_icon from "../../assets/ai-icon.png"
-import { Link, useNavigate} from 'react-router';
+import { useNavigate} from 'react-router';
+import bookmark from '../../assets/bookmark.png';
+import bookmark_marked from '../../assets/bookmark-marked.png';
 
 function HomePage() {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const username = storedUser?.username || 'User';
-    const [count,setCount] = useState(0);
     const [info, setInfo] = useState('');
     const [selectedBook, setSelectedBook] = useState('');
+    const [read, setRead] = useState(storedUser?.readBooks || []);
     const navigate = useNavigate();
     useEffect(() => {
     getBooks();
     },[]);
 
+    console.log(read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read')
+    console.log(selectedBook[0])
 
     async function getBooks(){
         try{
@@ -57,9 +61,41 @@ const handleClose = () => {
     setSelectedBook('');
 }
 
-    function addCount(){
-        setCount(c => c+1)
-    }
+const handleMark = async() => {
+    const title = selectedBook[0];
+    let updatedRead;
+
+    //to add or remove the books
+    if(read.includes(title)) 
+        updatedRead = read.filter(book => book !== title)
+    else
+        updatedRead = [...read, title]
+
+    //to update the useState
+    setRead(updatedRead);
+
+    //to update the local storage
+    storedUser.readBooks = updatedRead;
+    localStorage.setItem('user', JSON.stringify(storedUser));
+
+    //update the read books in the backend
+    try {
+        const response = await fetch('http://127.0.0.1:8000/update-user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(storedUser),
+        });
+        if (!response.ok) {
+            const error = await response.json();
+            console.error('Error updating user:', error.detail || 'Unknown error');
+          } else {
+            console.log('ReadBooks updated in backend');
+          }
+        } catch (error) {
+          console.error('Network or fetch error:', error);
+        }
+      };
+
     return (
         <>
             <div className={styles.body}>
@@ -162,6 +198,10 @@ const handleClose = () => {
                                             <img src={selectedBook[1]} alt="book image" />
                                             <p>{selectedBook[2]}</p>
                                         </div>
+                                        <div className={styles.read} onClick={handleMark}>
+                                            <img className={styles.bookmark} src = {read.includes(selectedBook[0]) ? bookmark_marked : bookmark} alt="bookmark"/>
+                                            <p>{read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read'}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 </>
@@ -173,95 +213,5 @@ const handleClose = () => {
         </>
     );
 }
-
-/*function HomePage(){
-    const [count,setCount] = useState(0)
-    const [info, setInfo] = useState('')
-    const { userData, updateData } = useUser();
-    useEffect(() => {
-    getBooks();
-    },[]);
-
-
-    async function getBooks(){
-        try{
-            const response = await fetch('http://localhost:8000/get_data', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: userData.username
-        })});
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-    // Parse the JSON response
-    const responseData = await response.json();
-    
-    // Return the response data (could be something from the server like a success message or object)
-    console.log('Successfully sent Post Request')
-    console.log(responseData)
-    console.log(userData.favBooks)
-    setInfo(responseData)
-  } catch (error) {
-    // If an error occurs, log it and return an error message
-    console.error('Error occurred during the POST request:', error);
-    return { error: error.message }; // Return error message for further handling
-  }
-}
-    
-
-    function addCount(){
-        setCount(c => c+1)
-    }
-    
-    return (
-        <>
-            <br /><br />
-            <p>Hello {userData.username}, how are you?</p>
-            <br />
-            <p>Here are some book recommendations customised just for you</p>
-            <br /><br />
-    
-            {(!userData?.favBooks || userData.favBooks.length < 2 || !info.set1 || !info.set2 || !info.set3)
-                ? <p>Loading your recommendations...</p>
-                : (
-                    <>
-                        <div className={styles.preference1}>
-                            <h2>Because you like {userData.favBooks[0]}: </h2>
-                            {info.set1.map(([title, img], index) => (
-                                <div key={index}>
-                                    <p>{title}</p>
-                                    <img className={styles.preferences} src={img} alt={title} />
-                                </div>
-                            ))}
-                        </div>
-    
-                        <div className={styles.preference2}>
-                            <h2>Because you like {userData.favBooks[1]}: </h2>
-                            {info.set2.map(([title, img], index) => (
-                                <div key={index}>
-                                    <p>{title}</p>
-                                    <img className={styles.preferences} src={img} alt={title} />
-                                </div>
-                            ))}
-                        </div>
-    
-                        <div className={styles.preference3}>
-                            <h2>Because you like {userData.favBooks[1]}: </h2>
-                            {info.set3.map(([title, img], index) => (
-                                <div key={index}>
-                                    <p>{title}</p>
-                                    <img className={styles.preferences} src={img} alt={title} />
-                                </div>
-                            ))}
-                        </div>
-                    </>
-                )
-            }
-        </>
-    );
-}*/
 
 export default HomePage

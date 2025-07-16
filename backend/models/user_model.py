@@ -10,4 +10,5 @@ class UserModel(BaseModel) :
     preferredGenres: Optional[List[str]] = None
     genresToExplore: Optional[List[str]] = None
     favBooks: Optional[List[str]] = None
+    readBooks: List[str] = []
     profile_complete: bool
