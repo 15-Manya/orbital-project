@@ -207,3 +207,34 @@
     overflow-y: auto;
     max-height: 40vh;
 }
+
+.card .read {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+.card .read .bookmark {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 0;
+    opacity: 1;
+}
+
+.card .read .bookmark_marked {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+.card .read p {
+    font-weight: 800;
+    position: relative;
+    padding: 5px 30px;
+}

@@ -1,13 +1,20 @@
 import styles from './SearchPage.module.css'
 import logo from "../../assets/logo-dark.png";
 import { useState } from 'react';
+import bookmark from '../../assets/bookmark.png';
+import bookmark_marked from '../../assets/bookmark-marked.png';
+
 function SearchPage(){
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const username = storedUser?.username || 'User';
+    const [read, setRead] = useState(storedUser?.readBooks || []);
     const [searchBooks,setSearchBooks] = useState([]);
     const [bookname,setBookName] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [selectedBook, setSelectedBook] = useState('');
+
+    console.log(read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read')
+    console.log(selectedBook[0])
 
     async function handleSearch(e){
         //e.preventDefault();
@@ -42,6 +49,41 @@ function SearchPage(){
     return { error: error.message }; // Return error message for further handling
   }
 }
+
+const handleMark = async() => {
+    const title = selectedBook[0];
+    let updatedRead;
+
+    //to add or remove the books
+    if(read.includes(title)) 
+        updatedRead = read.filter(book => book !== title)
+    else
+        updatedRead = [...read, title]
+
+    //to update the useState
+    setRead(updatedRead);
+
+    //to update the local storage
+    storedUser.readBooks = updatedRead;
+    localStorage.setItem('user', JSON.stringify(storedUser));
+
+    //update the read books in the backend
+    try {
+        const response = await fetch('http://127.0.0.1:8000/update-user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(storedUser),
+        });
+        if (!response.ok) {
+            const error = await response.json();
+            console.error('Error updating user:', error.detail || 'Unknown error');
+          } else {
+            console.log('ReadBooks updated in backend');
+          }
+        } catch (error) {
+          console.error('Network or fetch error:', error);
+        }
+      };
 
 const handleClick = (book) => {
     setSelectedBook(book);
@@ -99,6 +141,10 @@ const handleClose = () => {
                                         <div className={styles.content}>
                                             <img src={selectedBook[1]} alt="book image" />
                                             <p>{selectedBook[2]}</p>
+                                        </div>
+                                        <div className={styles.read} onClick={handleMark}>
+                                            <img className={styles.bookmark} src = {read.includes(selectedBook[0]) ? bookmark_marked : bookmark} alt="bookmark"/>
+                                            <p>{read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read'}</p>
                                         </div>
                                     </div>
                                 </div>
