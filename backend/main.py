@@ -9,7 +9,6 @@ from routes import create_user
 from routes import get_data
 from fastapi.middleware.cors import CORSMiddleware
 from routes.chat import router as chat_router
-from routes.generate_recommendations import recommendations3
 from database.pinecone import books_data, get_google_books
 from routes import update_user
 from routes import get_user

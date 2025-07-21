@@ -45,10 +45,22 @@ def create_book_description(book):
     Average Rating: {book.get('averageRating', 'Unrated')}/5.
     """
 
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-#descriptions = [create_book_description(b) for b in books_data]
-#embeddings = model.encode(descriptions).tolist()  # Converts to 384D vectors
+_model = None
 
+def get_model():
+    global _model
+    if _model is None:
+        _model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2') 
+    return _model
+
+#descriptions = [create_book_description(b) for b in books_data]
+#embeddings = get_model().encode(descriptions).tolist()  # Converts to 384D vectors
+#model = get_model()
+#batch_size = 32
+#for i in range(0, len(book_descriptions), batch_size):
+    #batch = book_descriptions[i:i + batch_size]
+    #batch_embeddings = model.encode(batch)
+    #embeddings.extend(batch_embeddings)
 
 
 
@@ -94,4 +106,4 @@ book_metadata = [{
 
 # Upsert in batches of 100
 #for i in range(0, len(vectors), 100):
-#    index.upsert(vectors=vectors[i:i+100])*/
+#    index.upsert(vectors=vectors[i:i+100])

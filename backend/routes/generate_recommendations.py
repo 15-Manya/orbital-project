@@ -1,4 +1,4 @@
-from database.pinecone import model,index,books_data
+from database.pinecone import get_model,index,books_data
 import random
 from openai import OpenAI
 import os 
@@ -11,7 +11,6 @@ client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 # Test query
 test_query = "Rich Dad Poor Dad"
 test_query2 = "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
-
 
 def get_ai_description(book_name):
     system_prompt = "You are a librarian. Your job is to provide a detailed summary of a book based on it's title. Your description must include, but not limited to, the name, author, genre, as well as a detailed (minimum 100 word) description on what the book is about. Make the language in a tone that a librarian would use to give details about a book."
@@ -37,6 +36,7 @@ def get_ai_description(book_name):
 # description = get_ai_description('Atomic Habits')
 
 def get_general_recommendation(book1, book2, book3): 
+    model = get_model()
     description1 = get_ai_description(book1)
     description2 = get_ai_description(book2)
     description3 = get_ai_description(book3)
@@ -99,6 +99,7 @@ def get_general_recommendation(book1, book2, book3):
 
 
 def get_recommendation(book_name, number = 10):
+    model = get_model()
     description = get_ai_description(book_name)
     # print('Description: ', description)
     query_embedding = model.encode(description).tolist()
@@ -150,6 +151,9 @@ def get_recommendation(book_name, number = 10):
     
     return final_recommendations
     
-recommendations3 = get_general_recommendation('Atomic Habits', 'Midnight Library', 'The Alchemist') #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
+if __name__ == "__main__":
+    recommendations3 = get_general_recommendation('Atomic Habits', 'Midnight Library', 'The Alchemist')
+    print(recommendations3)
+    #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
 # recommendations2 = get_recommendation('Midnight Library')
 # recommendations3 = get_recommendation('The Alchemist')

@@ -14,6 +14,7 @@ import {BrowserRouter, Routes, Route} from 'react-router';
 import { UserResponse } from './components/Onboarding/UserResponse';
 import Chat from './components/Chat/Chat';
 import SearchPage  from './components/SearchPage/SearchPage';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/home" element ={<HomePage/>} />
           <Route path='/chat' element = {<Chat />} />
           <Route path="/search" element = {<SearchPage />}/> 
+          <Route path='/profile' element= {<Profile />}></Route>
 
         </Routes>
       </BrowserRouter>
