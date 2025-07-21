@@ -9,3 +9,4 @@ openai==1.88.0
 sentence-transformers==4.1.0
 pinecone==7.0.2
 typing_extensions==4.13.2
+protobuf>=4.23.0
