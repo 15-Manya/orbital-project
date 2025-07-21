@@ -12,6 +12,7 @@ from routes.chat import router as chat_router
 from database.pinecone import books_data, get_google_books
 from routes import update_user
 from routes import get_user
+import uvicorn
 
 app = FastAPI()
 
@@ -29,6 +30,11 @@ app.include_router(get_user.router)
 app.include_router(check_dbconnection.router)
 app.include_router(chat_router)
 app.include_router(get_data.router)
+
+#to send the port for deployment
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000)) 
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 # print(recommendations3)
 # print(recommendations2)
