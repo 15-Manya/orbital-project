@@ -13,6 +13,7 @@ from database.pinecone import books_data, get_google_books
 from routes import update_user
 from routes import get_user
 import uvicorn
+import os
 
 app = FastAPI()
 
