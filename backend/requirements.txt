@@ -7,7 +7,7 @@ requests==2.32.4
 python-dotenv==1.1.0
 openai==1.88.0
 sentence-transformers==4.1.0
-pinecone==7.0.2
+pinecone==7.3.0
 typing_extensions==4.13.2
 protobuf==4.25.3
 google-api-core==2.17.0

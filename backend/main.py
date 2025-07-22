@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import requests
 from sentence_transformers import SentenceTransformer
-from pinecone.grpc import PineconeGRPC as Pinecone
+from pinecone import Pinecone
 from pinecone import ServerlessSpec
 import time
 from routes import check_dbconnection

@@ -1,6 +1,6 @@
 import requests
 from sentence_transformers import SentenceTransformer
-from pinecone.grpc import PineconeGRPC as Pinecone
+from pinecone import Pinecone
 from pinecone import ServerlessSpec
 from database.connection import book_data
 
