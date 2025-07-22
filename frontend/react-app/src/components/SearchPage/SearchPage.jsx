@@ -23,7 +23,7 @@ function SearchPage(){
         setBookName(book_searched)
 
         try{
-            const response = await fetch('http://localhost:8000/search_data', {
+            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -69,7 +69,7 @@ const handleMark = async() => {
 
     //update the read books in the backend
     try {
-        const response = await fetch('http://127.0.0.1:8000/update-user', {
+        const response = await fetch('https://orbital-project-1-5ux7.onrender.com/update-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(storedUser),

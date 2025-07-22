@@ -1,0 +1,85 @@
+.body {
+    background-color: #fff;
+    height: 100%;
+    padding-top: 2px;
+    color: #000;
+}
+
+.body nav p {
+    font-weight: 800;
+    font-size: 24px;
+    justify-self: center;
+}
+
+hr {
+    color: #333;
+    padding: 0;
+}
+
+.color {
+    background-color: #4A6E98;
+    height: 10rem;
+}
+
+.no_color {
+    height: 5rem;
+}
+
+.profile_picture {
+    position: relative;
+}
+
+.profile_picture img {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 5rem;
+    width: 5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.description {
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.grid .card {
+    background-color: #ccc;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.grid h3 {
+    padding: 5px 10px;
+}
+.grid p {
+    padding: 5px 10px;
+}
+
+.description h3 {
+    padding : 10px;
+    justify-self: center;
+}
+
+.read {
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.read h3 {
+    padding: 5px 10px;
+}
+
+.read p {
+    padding: 5px 15px;
+}
