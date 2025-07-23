@@ -12,6 +12,7 @@ from routes.chat import router as chat_router
 from database.pinecone import books_data, get_google_books
 from routes import update_user
 from routes import get_user
+from routes import generate_description
 import uvicorn
 import os
 
@@ -19,7 +20,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["*"],
+    allow_origins = ["http://localhost:3000", 
+        "https://orbital-project-sage.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,6 +33,7 @@ app.include_router(get_user.router)
 app.include_router(check_dbconnection.router)
 app.include_router(chat_router)
 app.include_router(get_data.router)
+app.include_router(generate_description.router)
 
 #to send the port for deployment
 if __name__ == "__main__":

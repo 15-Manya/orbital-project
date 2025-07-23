@@ -39,7 +39,7 @@ def build_prompt(user_data) :
 
 
 @router.post('/generate_description')
-def chat_bot(username: str) :
+def generate_description(username: str) :
     user_data = user_collection.find_one({'username': username})
     if not user_data :
         raise HTTPException(status_code = 404, detail = 'User not found')
