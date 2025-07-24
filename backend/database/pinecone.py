@@ -1,5 +1,4 @@
 import requests
-from sentence_transformers import SentenceTransformer
 from fastembed import TextEmbedding
 from pinecone import Pinecone
 from pinecone import ServerlessSpec
