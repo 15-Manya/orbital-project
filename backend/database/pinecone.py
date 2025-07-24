@@ -1,5 +1,6 @@
 import requests
 from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 from pinecone import Pinecone
 from pinecone import ServerlessSpec
 from database.connection import book_data
@@ -44,24 +45,15 @@ def create_book_description(book):
     {book.get('pageCount', '')} pages. 
     Average Rating: {book.get('averageRating', 'Unrated')}/5.
     """
+# descriptions = [create_book_description(b) for b in books_data]
+# model = TextEmbedding()  # defaults to BGE-small-en-v1.5
+# vector = list(model.embed(descriptions))
+# embeddings = [vec.tolist() for vec in vector]
 
-_model = None
-
-def get_model():
-    global _model
-    if _model is None:
-        _model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2') 
-    return _model
-
-#descriptions = [create_book_description(b) for b in books_data]
-#embeddings = get_model().encode(descriptions).tolist()  # Converts to 384D vectors
-#model = get_model()
-#batch_size = 32
-#for i in range(0, len(book_descriptions), batch_size):
-    #batch = book_descriptions[i:i + batch_size]
-    #batch_embeddings = model.encode(batch)
-    #embeddings.extend(batch_embeddings)
-
+# print(len(embeddings))
+# print(len(embeddings[0]))
+# print(type(embeddings))
+# print(type(embeddings[0]))
 
 
 pc = Pinecone(api_key="pcsk_3s7wbm_7EyXUi1NAupYJDc2SAeN9519GhqaSRk6YUMe1dV8w3JaUJxxTcgs6fxjVomyecy")
@@ -98,12 +90,12 @@ book_metadata = [{
 # print(book_metadata)
 
 # Create vector tuples
-#vectors = [
+# vectors = [
 #    (str(i), embeddings[i]) #Let's do it without Metadata for now
 #    for i in range(len(embeddings))
-#]
+# ]
 
 
-# Upsert in batches of 100
-#for i in range(0, len(vectors), 100):
+# # Upsert in batches of 100
+# for i in range(0, len(vectors), 100):
 #    index.upsert(vectors=vectors[i:i+100])
