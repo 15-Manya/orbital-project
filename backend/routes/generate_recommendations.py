@@ -1,4 +1,5 @@
-from database.pinecone import get_model,index,books_data
+from database.pinecone import index,books_data
+from fastembed import TextEmbedding
 import random
 from openai import OpenAI
 import os 
@@ -36,14 +37,14 @@ def get_ai_description(book_name):
 # description = get_ai_description('Atomic Habits')
 
 def get_general_recommendation(book1, book2, book3): 
-    model = get_model()
+    model = TextEmbedding()
     description1 = get_ai_description(book1)
     description2 = get_ai_description(book2)
     description3 = get_ai_description(book3)
 
-    lst1 = model.encode(description1).tolist()
-    lst2 = model.encode(description2).tolist()
-    lst3 = model.encode(description3).tolist()
+    lst1 = list(model.embed(description1))[0].tolist()
+    lst2 = list(model.embed(description2))[0].tolist()
+    lst3 = list(model.embed(description3))[0].tolist()
 
     vectors = []
     for i in range(len(lst1)): 
@@ -99,10 +100,10 @@ def get_general_recommendation(book1, book2, book3):
 
 
 def get_recommendation(book_name, number = 10):
-    model = get_model()
+    model = TextEmbedding()
     description = get_ai_description(book_name)
     # print('Description: ', description)
-    query_embedding = model.encode(description).tolist()
+    query_embedding = list(model.embed(description))[0].tolist()
 
     results = index.query(
         vector=query_embedding,
@@ -156,4 +157,5 @@ if __name__ == "__main__":
     print(recommendations3)
     #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
 # recommendations2 = get_recommendation('Midnight Library')
-# recommendations3 = get_recommendation('The Alchemist')
+recommendations3 = get_recommendation('The Alchemist')
+print(recommendations3)
