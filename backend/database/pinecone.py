@@ -50,7 +50,7 @@ _model = None
 def get_model():
     global _model
     if _model is None:
-        _model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2') 
+        _model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2') 
     return _model
 
 #descriptions = [create_book_description(b) for b in books_data]
