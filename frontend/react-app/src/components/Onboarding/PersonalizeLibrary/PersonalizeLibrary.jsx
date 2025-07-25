@@ -37,7 +37,7 @@ function PersonalizeLibrary() {
     console.log("📦 Final JSON:", JSON.stringify(updatedUser));
 
     try {
-        const response = await fetch('https://orbital-project-1-5ux7.onrender.com/update-user', {
+        const response = await fetch('http://127.0.0.1:8000/update-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedUser),

@@ -2,13 +2,21 @@ from database.pinecone import index,books_data
 from fastembed import TextEmbedding
 import random
 from openai import OpenAI
-import os 
 from dotenv import load_dotenv
+import psutil
 import os
 
 
 load_dotenv()
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
+#Memory before model loading
+process = psutil.Process(os.getpid())
+print("Before model loading:", process.memory_info().rss / 1024 ** 2, "MB")
+
+model = TextEmbedding()
+#Memory after model loading
+print("After model loading:", process.memory_info().rss / 1024 ** 2, "MB")
+
 # Test query
 test_query = "Rich Dad Poor Dad"
 test_query2 = "How to Win Friends and Influence People is a 1936 self-help book written by Dale Carnegie. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. Carnegie had been conducting business education courses in New York since 1912."
@@ -37,7 +45,6 @@ def get_ai_description(book_name):
 # description = get_ai_description('Atomic Habits')
 
 def get_general_recommendation(book1, book2, book3): 
-    model = TextEmbedding()
     description1 = get_ai_description(book1)
     description2 = get_ai_description(book2)
     description3 = get_ai_description(book3)
@@ -100,7 +107,6 @@ def get_general_recommendation(book1, book2, book3):
 
 
 def get_recommendation(book_name, number = 10):
-    model = TextEmbedding()
     description = get_ai_description(book_name)
     # print('Description: ', description)
     query_embedding = list(model.embed(description))[0].tolist()
@@ -159,3 +165,10 @@ if __name__ == "__main__":
 # recommendations2 = get_recommendation('Midnight Library')
 recommendations3 = get_recommendation('The Alchemist')
 print(recommendations3)
+
+def get_memory_usage_mb():
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info().rss  # in bytes
+    return mem / (1024 * 1024)  # in MB
+
+print(f"Memory usage total: {get_memory_usage_mb():.2f} MB")

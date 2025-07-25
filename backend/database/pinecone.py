@@ -29,8 +29,9 @@ def get_book_data(genre_list):
         data += genre_data
     return data 
 
-if book_data.count_documents({}) == 0:
-    book_data.insert_one({'data': get_book_data(genres)})
+# === ONLY NEEDED ONCE; COMMENTED OUT TO PREVENT UNNECESSARY API CALLS ===
+#if book_data.count_documents({}) == 0:
+#    book_data.insert_one({'data': get_book_data(genres)})
 
 doc = book_data.find_one()
 books_data = doc['data']

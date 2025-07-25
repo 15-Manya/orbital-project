@@ -14,13 +14,13 @@ from routes import get_user
 from routes import generate_description
 import uvicorn
 import os
+import psutil
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["http://localhost:3000", 
-        "https://orbital-project-sage.vercel.app"],
+    allow_origins = ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,6 +38,13 @@ app.include_router(generate_description.router)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000)) 
     uvicorn.run("main:app", host="0.0.0.0", port=port)
+
+def get_memory_usage_mb():
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info().rss  # in bytes
+    return mem / (1024 * 1024)  # in MB
+
+print(f"Memory usage main: {get_memory_usage_mb():.2f} MB")
 
 # print(recommendations3)
 # print(recommendations2)
