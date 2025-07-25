@@ -73,7 +73,7 @@ function SignUp() {
 
     const createUser = async (user) => {
         try {
-            fetch('http://127.0.0.1:8000/create-user', {
+            fetch('https://orbital-project-1-5ux7.onrender.com/create-user', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

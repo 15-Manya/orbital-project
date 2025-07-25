@@ -22,7 +22,7 @@ function Login() {
         .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                fetch(`http://127.0.0.1:8000/get-user?uid=${user.uid}`)
+                fetch(`https://orbital-project-1-5ux7.onrender.com/get-user?uid=${user.uid}`)
                 .then((res) => res.json())
                 .then((userData) => {
                     localStorage.setItem('user', JSON.stringify(userData));
@@ -50,7 +50,7 @@ function Login() {
         signInWithPopup(auth, provider)
         .then((userCredential) => {
             const user = userCredential.user;
-            fetch(`http://127.0.0.1:8000/get-user?uid=${user.uid}`)
+            fetch(`https://orbital-project-1-5ux7.onrender.com/get-user?uid=${user.uid}`)
                 .then((res) => res.json())
                 .then((userData) => {
                     localStorage.setItem('user', JSON.stringify(userData));
