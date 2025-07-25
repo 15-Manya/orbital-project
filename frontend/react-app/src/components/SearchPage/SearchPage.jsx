@@ -18,37 +18,37 @@ function SearchPage(){
 
     async function handleSearch(e){
         //e.preventDefault();
-        const book_searched = inputValue
-        console.log(book_searched)
-        setBookName(book_searched)
-
-        try{
-            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              book: book_searched
-        })});
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-    const responseData = await response.json();
-    console.log(responseData)
-    console.log('Successfully sent Post Request')
-    // console.log(responseData)
-    // console.log(responseData)
-    const recommendations = responseData.recommendations
-    //console.log(recommendations)
-    setSearchBooks(recommendations)
-    console.log(searchBooks)
-  } catch (error) {
-    // If an error occurs, log it and return an error message
-    console.error('Error occurred during the POST request:', error);
-    return { error: error.message }; // Return error message for further handling
-  }
-}
+        if(e.key() === 'Enter') {const book_searched = inputValue
+            console.log(book_searched)
+            setBookName(book_searched)
+    
+            try{
+                const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  book: book_searched
+            })});
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+        const responseData = await response.json();
+        console.log(responseData)
+        console.log('Successfully sent Post Request')
+        // console.log(responseData)
+        // console.log(responseData)
+        const recommendations = responseData.recommendations
+        //console.log(recommendations)
+        setSearchBooks(recommendations)
+        console.log(searchBooks)
+      } catch (error) {
+        // If an error occurs, log it and return an error message
+        console.error('Error occurred during the POST request:', error);
+        return { error: error.message }; // Return error message for further handling
+      }
+    }}
 
 const handleMark = async() => {
     const title = selectedBook[0];
