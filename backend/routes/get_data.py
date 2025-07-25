@@ -10,8 +10,8 @@ router = APIRouter()
 def get_data(data : HomeModel): 
     username = data.username
     info = user_collection.find_one({'username': username}, {'_id': 0})
-    books_fav = info['favBooks'] #list of the user's favourite books
-    books_read = info['readBooks', []] #list of the user's read books
+    books_fav = info.get('favBooks', []) #list of the user's favourite books
+    books_read = info.get('readBooks', []) #list of the user's read books
     total_books = books_read
     books = total_books[-3:]
     set_1 = get_recommendation(books[0])
