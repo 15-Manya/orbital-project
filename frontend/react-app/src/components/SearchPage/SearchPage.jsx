@@ -18,7 +18,7 @@ function SearchPage(){
 
     async function handleSearch(e){
         //e.preventDefault();
-        if(e.key() === 'Enter') {const book_searched = inputValue
+        if(e.key === 'Enter') {const book_searched = inputValue
             console.log(book_searched)
             setBookName(book_searched)
     
