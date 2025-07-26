@@ -196,8 +196,8 @@ if __name__ == "__main__":
     print(recommendations3)
     #Contains a list of tuples. Each tuple has 2 elements, first element is the book name and second is its image URL 
 # recommendations2 = get_recommendation('Midnight Library')
-recommendations3 = get_recommendation('The Alchemist')
-print(recommendations3)
+#recommendations3 = get_recommendation('The Alchemist')
+#print(recommendations3)
 
 def get_memory_usage_mb():
     process = psutil.Process(os.getpid())
