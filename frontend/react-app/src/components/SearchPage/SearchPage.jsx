@@ -115,7 +115,7 @@ const handleClose = () => {
                 <div className={styles.discover}>
                 <h1 className={styles.heading}>Start exploring 📚</h1>
                 <input type="text" placeholder="What would you like to search for today?" value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)} onKeyDown={(e) => handleSearch(e)}></input>
+                    onChange={(e) => setInputValue(e.target.value)} onKeyDown={async (e) => await handleSearch(e)}></input>
                     <div>
                     <div className={styles.display_preference}>
                         <h2>Here are some books related to {bookname} </h2>
