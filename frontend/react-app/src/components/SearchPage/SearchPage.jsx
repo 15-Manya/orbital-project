@@ -17,8 +17,9 @@ function SearchPage(){
     console.log(selectedBook[0])
 
     async function handleSearch(e){
-        //e.preventDefault();
-        if(e.key === 'Enter') {const book_searched = inputValue
+        if(e.key === 'Enter') {
+            e.preventDefault();
+            const book_searched = inputValue
             console.log(book_searched)
             setBookName(book_searched)
     
@@ -42,7 +43,6 @@ function SearchPage(){
         const recommendations = responseData.recommendations
         //console.log(recommendations)
         setSearchBooks(recommendations)
-        console.log(searchBooks)
       } catch (error) {
         // If an error occurs, log it and return an error message
         console.error('Error occurred during the POST request:', error);
@@ -115,7 +115,7 @@ const handleClose = () => {
                 <div className={styles.discover}>
                 <h1 className={styles.heading}>Start exploring 📚</h1>
                 <input type="text" placeholder="What would you like to search for today?" value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)} onKeyDown={async (e) => await handleSearch(e)}></input>
+                    onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleSearch}></input>
                     <div>
                     <div className={styles.display_preference}>
                         <h2>Here are some books related to {bookname} </h2>
