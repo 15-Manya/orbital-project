@@ -13,8 +13,8 @@ function SearchPage(){
     const [inputValue, setInputValue] = useState('');
     const [selectedBook, setSelectedBook] = useState('');
 
-    console.log(read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read')
-    console.log(selectedBook[0])
+    //console.log(read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read')
+    //console.log(selectedBook[0])
 
     async function handleSearch(e){
         if(e.key === 'Enter') {
@@ -118,7 +118,7 @@ const handleClose = () => {
                     onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleSearch}></input>
                     <div>
                     <div className={styles.display_preference}>
-                        <h2>Here are some books related to {bookname} </h2>
+                        <h2></h2>
                         <div className={styles.display}>
                             {searchBooks.map(([title, img, desc], index) => (
                                 <div key={index}>
