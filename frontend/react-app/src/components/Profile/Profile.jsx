@@ -1,5 +1,6 @@
 import styles from './Profile.module.css';
 import profile_pic from '../../assets/profile_picture.png';
+import arrow from '../../assets/arrow_icon.png'
 import { useEffect, useState } from 'react';
 
 function Profile() {
@@ -39,6 +40,7 @@ function Profile() {
             <div className={styles.body}>
                 <nav className={styles.navbar}>
                     <div className='container'>
+                        <a href="/home"><img className={styles.arrow} src={arrow} alt="arrow" /></a>
                         <p>Profile</p>
                     </div>
                 </nav>

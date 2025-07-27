@@ -83,3 +83,12 @@ hr {
 .read p {
     padding: 5px 15px;
 }
+
+.arrow {
+    height: 35px;
+    position: absolute;
+    transform: rotate(180deg);
+    cursor: pointer;
+    left: 0;
+    margin-left: 25px;
+}
