@@ -10,14 +10,14 @@ function Profile() {
     const readBooks = storedUser?.readBooks || [];
     const [description, setDescription] = useState('Loading user description...');
     useEffect(() => {
+    console.log('Profile page username:', username);
     async function getDescription() {
         try{
-            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/generate_description?username=${username}', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: username
-        })});
+            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/generate_description', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username }),
+              });
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

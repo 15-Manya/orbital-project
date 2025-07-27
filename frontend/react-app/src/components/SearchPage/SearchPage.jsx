@@ -27,9 +27,8 @@ function SearchPage(){
                 const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  book: book_searched
-            })});
+                body: JSON.stringify({ username })
+            });
     
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
