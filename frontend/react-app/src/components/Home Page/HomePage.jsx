@@ -128,7 +128,7 @@ const handleMark = async() => {
                     <div className='container'>
                         <div className={styles.recommendation}>
                             {(!storedUser?.favBooks || storedUser.favBooks.length < 2 || !info.set1 || !info.set2 || !info.set3)
-                ? <p>Loading your recommendations...</p>
+                ? <p className={styles.loading}>Loading your recommendations...</p>
                 : (
                     <>
                         <div className={styles.display_preference}>

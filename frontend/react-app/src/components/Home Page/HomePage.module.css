@@ -260,3 +260,11 @@
     position: relative;
     padding: 5px 30px;
 }
+
+.loading {
+    font-size: 18px;
+    font-weight: 500;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+}

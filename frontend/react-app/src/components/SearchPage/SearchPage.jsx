@@ -12,6 +12,7 @@ function SearchPage(){
     const [bookname,setBookName] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [selectedBook, setSelectedBook] = useState('');
+    const [loading, setLoading] = useState(false);
 
     //console.log(read.includes(selectedBook[0]) ? 'Marked as read' : 'Mark as read')
     //console.log(selectedBook[0])
@@ -22,6 +23,7 @@ function SearchPage(){
             const book_searched = inputValue
             console.log(book_searched)
             setBookName(book_searched)
+            setLoading(true); // Start loading
     
             try{
                 const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
@@ -47,8 +49,9 @@ function SearchPage(){
         // If an error occurs, log it and return an error message
         console.error('Error occurred during the POST request:', error);
         return { error: error.message }; // Return error message for further handling
-      }
-    }}
+      } finally {
+        setLoading(false); // End loading
+    }}}
 
 const handleMark = async() => {
     const title = selectedBook[0];
@@ -119,6 +122,9 @@ const handleClose = () => {
                     <div>
                     <div className={styles.display_preference}>
                         <h2></h2>
+                        {loading ? (
+                        <p className={styles.loading}>Loading your books...</p>
+                    ) : (
                         <div className={styles.display}>
                             {searchBooks.map(([title, img, desc], index) => (
                                 <div key={index}>
@@ -130,6 +136,7 @@ const handleClose = () => {
                                 </div>
                             ))}
                         </div> 
+                        )}
                         </div>
                     </div>
                     {selectedBook && (
