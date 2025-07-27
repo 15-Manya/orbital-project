@@ -10,33 +10,29 @@ function Profile() {
     const readBooks = storedUser?.readBooks || [];
     const [description, setDescription] = useState('Loading user description...');
     useEffect(() => {
-    async function getDescription() {
-        try{
-            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/generate_description?username=${username}', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: username
-        })});
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        async function getDescription() {
+          try {
+            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/generate_description', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username: username }),
+            });
+            console.log(username)
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+      
+            const responseData = await response.json();
+            console.log('Successfully sent Post Request');
+            console.log(responseData);
+            setDescription(responseData.response);
+          } catch (error) {
+            console.error('Error occurred during the POST request:', error);
+            return { error: error.message };
+          }
         }
-
-    // Parse the JSON response
-    const responseData = await response.json();
-    
-    // Return the response data (could be something from the server like a success message or object)
-    console.log('Successfully sent Post Request')
-    console.log(responseData)
-    setDescription(responseData.response)
-  } catch (error) {
-    // If an error occurs, log it and return an error message
-    console.error('Error occurred during the POST request:', error);
-    return { error: error.message }; // Return error message for further handling
-  }
-}
-getDescription(); }, [username])
+        getDescription();
+      }, [username]);
 
     return (
         <>
