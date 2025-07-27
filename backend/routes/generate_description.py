@@ -9,7 +9,7 @@ import os
 load_dotenv()
 router = APIRouter()
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
-
+description = {}
 
 class UsernameRequest(BaseModel):
     username: str
@@ -51,6 +51,9 @@ def generate_description(payload: UsernameRequest) :
 
     prompt = build_prompt(user_data)
 
+    if username in description :
+        return {'response' : description[username]}
+
     try :
         response = client.chat.completions.create(
             model = 'gpt-4',
@@ -58,7 +61,7 @@ def generate_description(payload: UsernameRequest) :
         )
     
         gpt_response = response.choices[0].message.content.strip()
-
+        description[username] = gpt_response
         return {'response': gpt_response}
 
     except Exception as e :
