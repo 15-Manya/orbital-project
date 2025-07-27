@@ -11,6 +11,9 @@ router = APIRouter()
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 
 
+class UsernameRequest(BaseModel):
+    username: str
+
 def build_prompt(user_data) :
     preferredGenres = user_data.get('preferredGenres', [])
     genresToExplore = user_data.get('genresToExplore', [])
@@ -28,9 +31,9 @@ def build_prompt(user_data) :
     if favBooks :
         user_prompt += f"Some of the users favourite books are {', '.join(favBooks)}.\n"
     if readBooks :
-        user_prompt += f'These are some books read by the user: {', '.join(readBooks)}.\n'
+        user_prompt += f"These are some books read by the user: {', '.join(readBooks)}.\n"
     
-    user_prompt += "Based on the information given above, give user personalised decription of the user as a reader within 500 characters, it can include their vision, their nature and what they usually tend to see when they look at the world in general."
+    user_prompt += "Based on the information given above, give user personalised description of the user as a reader within 500 characters, it can include their vision, their nature and what they usually tend to see when they look at the world in general."
 
     return [
         {'role': 'system', 'content': system_prompt},
@@ -39,8 +42,10 @@ def build_prompt(user_data) :
 
 
 @router.post('/generate_description')
-def generate_description(username: str) :
+def generate_description(payload: UsernameRequest) :
+    username = payload.username
     user_data = user_collection.find_one({'username': username})
+
     if not user_data :
         raise HTTPException(status_code = 404, detail = 'User not found')
 
