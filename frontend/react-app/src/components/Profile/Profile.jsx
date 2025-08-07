@@ -13,7 +13,7 @@ function Profile() {
     useEffect(() => {
         async function getDescription() {
           try {
-            const response = await fetch('https://orbital-project-1-5ux7.onrender.com/generate_description', {
+            const response = await fetch('https://orbital-project-8fn9.onrender.com/generate_description', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ username: username }),

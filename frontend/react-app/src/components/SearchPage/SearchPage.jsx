@@ -26,7 +26,7 @@ function SearchPage(){
             setLoading(true); // Start loading
     
             try{
-                const response = await fetch('https://orbital-project-1-5ux7.onrender.com/search_data', {
+                const response = await fetch('https://orbital-project-8fn9.onrender.com/search_data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -72,7 +72,7 @@ const handleMark = async() => {
 
     //update the read books in the backend
     try {
-        const response = await fetch('https://orbital-project-1-5ux7.onrender.com/update-user', {
+        const response = await fetch('https://orbital-project-8fn9.onrender.com/update-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(storedUser),

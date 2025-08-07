@@ -17,7 +17,7 @@ function Chat() {
             setChatHistory((prev => [...prev, userMessage]))
 
             try {
-                const response = await fetch(`https://orbital-project-1-5ux7.onrender.com/chat?username=${username}&user_input=${encodeURIComponent(userInput)}`, {
+                const response = await fetch(`https://orbital-project-8fn9.onrender.com/chat?username=${username}&user_input=${encodeURIComponent(userInput)}`, {
                 method: 'POST',
                 }
                 );
