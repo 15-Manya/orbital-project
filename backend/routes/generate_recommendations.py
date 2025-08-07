@@ -10,6 +10,11 @@ import os
 import gc
 from cachetools import LRUCache
 from functools import lru_cache
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+
+router = APIRouter(prefix="/recommendations", tags=['recommendations'])
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))

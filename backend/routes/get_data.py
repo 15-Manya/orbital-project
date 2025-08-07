@@ -8,17 +8,21 @@ router = APIRouter()
 
 @router.post('/get_data')
 def get_data(data : HomeModel): 
-    username = data.username
-    info = user_collection.find_one({'username': username}, {'_id': 0})
-    books_fav = info.get('favBooks', []) #list of the user's favourite books
-    books_read = info.get('readBooks', []) #list of the user's read books
-    total_books = books_read
-    books = total_books[-3:]
-    set_1 = get_recommendation(books[0])
-    set_2 = get_recommendation(books[1])
-    set_3 = get_recommendation(books[2])
-    general = get_general_recommendation(books[0],books[1],books[2])
-    
+    try :
+        username = data.username
+        print(username)
+        info = user_collection.find_one({'username': username}, {'_id': 0})
+        print(info)
+        books_fav = info.get('favBooks', []) #list of the user's favourite books
+        books_read = info.get('readBooks', []) #list of the user's read books
+        total_books = books_read
+        books = total_books[-3:]
+        set_1 = get_recommendation(books[0])
+        set_2 = get_recommendation(books[1])
+        set_3 = get_recommendation(books[2])
+        general = get_general_recommendation(books[0],books[1],books[2])
+    except Exception as e:
+        print("Error in getting user books" + e)
     
 
     # information = str(type(info))
