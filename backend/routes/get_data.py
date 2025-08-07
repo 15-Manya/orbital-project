@@ -22,7 +22,8 @@ def get_data(data : HomeModel):
         set_3 = get_recommendation(books[2])
         general = get_general_recommendation(books[0],books[1],books[2])
     except Exception as e:
-        print("Error in getting user books" + e)
+        print(f"Error in getting user books")
+        print(e)
     
 
     # information = str(type(info))
